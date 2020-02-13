@@ -1,1 +1,1 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/ for how to compile this example.
+Course material for the first half of Fundamentals and Advanced Hydrologic Spatial Applications in R for the AWRA 2020 Spring Conference Workshop in Austin, TX March 22nd.  See [Fundamentals of Spatial Analysis in R](https://mhweber.github.io/AWRA_2020_R_Spatial/index.html).
