@@ -1,4 +1,3 @@
-`r if (knitr::is_html_output()) '
 # References {-}
 
 ### General R / R Spatial Resources
@@ -9,7 +8,7 @@
 * [**Spatial Data Science - Pebesma and Bivand**](https://keen-swartz-3146c4.netlify.com/)
 * [**Spatial Data Science Course- Prof. Adam Wilson**](http://adamwilson.us/SpatialDataScience/index.html)
 * [**Introduction to Mapping and Spatial Analysis with R**](https://cengel.github.io/rspatial/)
-* [**Google's R Style Guide**](https://google.github.io/styleguide/Rguide.xml)
+* [**Google R Style Guide**](https://google.github.io/styleguide/Rguide.xml)
 * [**Advanced R by Hadley Wickham**](http://adv-r.had.co.nz/)
 * [**Data Camp Spatial Data with R Track**](https://www.datacamp.com/tracks/spatial-data-with-r)
 * [**FOSS4G2019 R for Geospatial Processing**](https://bakaniko.github.io/FOSS4G2019_Geoprocessing_with_R_workshop/)
@@ -46,4 +45,3 @@
 * [Geocomputation with R: **Making maps with R**](https://geocompr.robinlovelace.net/adv-map.html)
 * [Ryan Peek: **Mapping in R**](https://ryanpeek.github.io/mapping-in-R-workshop/index.html)
 
-'`
