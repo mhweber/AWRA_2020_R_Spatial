@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7140 64-bit) (preloaded format=xelatex 2020.2.12)  13 FEB 2020 16:12
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7140 64-bit) (preloaded format=xelatex 2020.2.12)  14 FEB 2020 11:17
 entering extended mode
 **./AWRA_2020_R_Spatial.tex
 (AWRA_2020_R_Spatial.tex
@@ -800,20 +800,20 @@ Chapter 6.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 343.
 [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 343.
 (AWRA_2020_R_Spatial.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 354.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 343.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 343.
 Package rerunfilecheck Info: File `AWRA_2020_R_Spatial.out' has not changed.
 (rerunfilecheck)             Checksum: B92834A8FCD5BF03BA7C3F7170A628D0.
  ) 
 Here is how much of TeX's memory you used:
- 26704 strings out of 427669
- 492172 string characters out of 3149215
- 613531 words of memory out of 3000000
- 30554 multiletter control sequences out of 15000+200000
+ 26703 strings out of 427669
+ 492164 string characters out of 3149215
+ 613490 words of memory out of 3000000
+ 30553 multiletter control sequences out of 15000+200000
  545081 words of font info for 57 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
  47i,8n,54p,818b,2146s stack positions out of 5000i,500n,10000p,200000b,50000s

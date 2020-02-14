@@ -1,25 +1,22 @@
 # References {-}
 
-### General R / R Spatial Resources
+### R Spatial Resources
 
 * [R Spatial - **Spatial Data Science with R**](http://rspatial.org/spatial/)
 * [**Geocomputation with R**](https://geocompr.robinlovelace.net/)
 * [**R Spatial Task View**](https://cran.r-project.org/web/views/Spatial.html)
+* [**Modern Geospatial Data Analysis with R by Zev Ross**](http://files.zevross.com/workshops/spatial/slides/html/0-deck-list.html)
 * [**Spatial Data Science - Pebesma and Bivand**](https://keen-swartz-3146c4.netlify.com/)
 * [**Spatial Data Science Course- Prof. Adam Wilson**](http://adamwilson.us/SpatialDataScience/index.html)
 * [**Introduction to Mapping and Spatial Analysis with R**](https://cengel.github.io/rspatial/)
 * [**Google R Style Guide**](https://google.github.io/styleguide/Rguide.xml)
 * [**Advanced R by Hadley Wickham**](http://adv-r.had.co.nz/)
-* [**Data Camp Spatial Data with R Track**](https://www.datacamp.com/tracks/spatial-data-with-r)
+* [**Intro to GIS and Spatial Analysis by Manuel Gimond**](https://mgimond.github.io/Spatial/index.html)
 * [**FOSS4G2019 R for Geospatial Processing**](https://bakaniko.github.io/FOSS4G2019_Geoprocessing_with_R_workshop/)
 
-### R sp Resources
 
-* [Bivand, R. S., Pebesma, E. J., & Gómez-Rubio, V. (2008). **Applied spatial data analysis with R. New York: Springer.**](https://www.springer.com/us/book/9781461476177)
-* [**Classes and Methods for Spatial Data: the sp package**](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf)
-* [**Classes and Methods for Spatial Data: the sp package**](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf)
 
-### R Simple Features Resources
+### R Vector Processing / Simple Features Resources
 
 * [**Simple Features for R**](https://r-spatial.github.io/sf/index.html)
 * [**Spatial Data in R: New Directions**](https://edzer.github.io/UseR2017/)
