@@ -4,9 +4,6 @@ author: "Marc Weber"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: no
 description: "This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020 ."
 ---
 
