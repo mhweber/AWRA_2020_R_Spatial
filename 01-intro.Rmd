@@ -19,3 +19,39 @@ knitr::kable(
 ```
 
 You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+### geocoding
+ - geocoding example with tmaptools using open street map
+
+```{r geocode-osm example}
+# uses OSM
+library(tmap)
+library(tmaptools)
+library(dplyr)
+tex_cap <-tmaptools::geocode_OSM("Texas Capital", 
+        as.sf = TRUE) %>% 
+  glimpse()
+```
+
+### interactive mapping
+
+```{r mapview example}
+library(mapview)
+mapview(tex_cap)
+```
+
+### Choropleth map
+The package maps (automatically installed and loaded with ggplot2) provides maps of the USA, with state and county borders, that can be retrieved and converted as sf objects:
+```{r tmap example}
+library(sf)
+library(maps)
+counties <- st_as_sf(map("county", plot = FALSE, fill = TRUE))
+counties <- subset(counties, grepl("texas", counties$ID) & !grepl('missouri,texas',counties$ID))
+counties$area <- as.numeric(st_area(counties))
+head(counties)
+
+tm_shape(counties) +
+  tm_polygons("area", 
+              style="quantile", 
+              title="Texas Counties Area")
+```
