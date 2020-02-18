@@ -55,3 +55,14 @@ tm_shape(counties) +
               style="quantile", 
               title="Texas Counties Area")
 ```
+
+
+
+## Challenge: Does this work? {.challenge}
+
+Did my .css styling adjustment work?
+
+### Answer {.solution} 
+
+1. Yes
+2. No

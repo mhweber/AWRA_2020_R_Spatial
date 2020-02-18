@@ -1,5 +1,8 @@
 bookdown::gitbook:
-  css: style.css
+  css: 
+    - css/style.css
+    - css/lesson.css
+    - css/bootstrap.min.css
   config:
     toc:
       before: |
