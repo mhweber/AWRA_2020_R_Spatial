@@ -1,0 +1,23 @@
+# Vector data with sf
+
+Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html).
+```{r eval=FALSE}
+library(tidycensus)
+library(tidyverse)
+
+census_api_key("YOUR API KEY GOES HERE")
+```
+
+```{r eval=TRUE}
+library(tidycensus)
+library(ggplot2)
+options(tigris_use_cache = TRUE)
+austin_tracts <- get_acs(state = 'TX', county = 'Travis', geography = "tract",
+                         variables = "B19013_001", geometry = TRUE)
+
+austin_tracts %>%
+  ggplot(aes(fill = estimate)) + 
+  geom_sf(color = NA) + 
+  coord_sf(crs = 26911) + 
+  scale_fill_viridis_c(option = "magma") 
+```
