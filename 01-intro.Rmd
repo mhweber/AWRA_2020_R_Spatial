@@ -22,7 +22,10 @@ What is R and why should we use R for spatial analysis? Let’s break that into 
 - R does not alter underlying data - manipulation and visualization in memory
 - R is great for repetetive graphics
 
+```{r my-fig, fig.cap="History of R", echo=FALSE}
 knitr::include_graphics("images/History of R.png")
+```
+
 
 ## Workshop agenda
 
