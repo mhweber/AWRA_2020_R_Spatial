@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Vector data with sf | Fundamentals of Spatial Analysis in R</title>
-  <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020 ." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <title>Chapter 2 Vector data with sf | Fundamentals of Spatial Analysis in R</title>
+  <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Vector data with sf | Fundamentals of Spatial Analysis in R" />
+  <meta property="og:title" content="Chapter 2 Vector data with sf | Fundamentals of Spatial Analysis in R" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020 ." />
+  <meta property="og:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Vector data with sf | Fundamentals of Spatial Analysis in R" />
+  <meta name="twitter:title" content="Chapter 2 Vector data with sf | Fundamentals of Spatial Analysis in R" />
   
-  <meta name="twitter:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020 ." />
+  <meta name="twitter:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
   
 
 <meta name="author" content="Marc Weber" />
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
+<link rel="prev" href="index.html"/>
 <link rel="next" href="raster-data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,7 +50,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -147,31 +147,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Fundamentals of Spatial Analysis in R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#workshop-agenda"><i class="fa fa-check"></i><b>2.1</b> Workshop agenda</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#spatial-data-in-r"><i class="fa fa-check"></i><b>2.2</b> Spatial Data in R</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#code-along"><i class="fa fa-check"></i><b>2.3</b> Code along</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>2.3.1</b> geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#interactive-mapping"><i class="fa fa-check"></i><b>2.3.2</b> interactive mapping</a></li>
-<li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#choropleth-map"><i class="fa fa-check"></i><b>2.3.3</b> Choropleth map</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-agenda"><i class="fa fa-check"></i><b>1.1</b> Workshop agenda</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.2</b> Spatial Data in R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#code-along"><i class="fa fa-check"></i><b>1.3</b> Code along</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.3.1</b> geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.3.2</b> interactive mapping</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.3.3</b> Choropleth map</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#challenge-does-this-work"><i class="fa fa-check"></i><b>2.4</b> Challenge: Does this work?</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#answer"><i class="fa fa-check"></i><b>2.4.1</b> Answer</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#challenge-does-this-work"><i class="fa fa-check"></i><b>1.4</b> Challenge: Does this work?</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.1</b> Answer</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>3</b> Vector data with sf</a></li>
-<li class="chapter" data-level="4" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>4</b> Raster data</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>2</b> Vector data with sf</a></li>
+<li class="chapter" data-level="3" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>3</b> Raster data</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
-<li class="chapter" data-level="6.0.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>6.0.1</b> R Spatial Resources</a></li>
-<li class="chapter" data-level="6.0.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>6.0.2</b> R Vector Processing / Simple Features Resources</a></li>
-<li class="chapter" data-level="6.0.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>6.0.3</b> R Raster Resources</a></li>
-<li class="chapter" data-level="6.0.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>6.0.4</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="5.0.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>5.0.1</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="5.0.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>5.0.2</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="5.0.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>5.0.3</b> R Raster Resources</a></li>
+<li class="chapter" data-level="5.0.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>5.0.4</b> R Mapping Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/mhweber/AWRA_2020_R_Spatial" target="blank">Published with bookdown</a></li>
@@ -194,24 +193,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="vector-data-with-sf" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Vector data with sf</h1>
+<h1><span class="header-section-number">Chapter 2</span> Vector data with sf</h1>
 <p>Load <code>tidycensus</code> - you’ll need to set your Census API key. A key can be obtained from <a href="http://api.census.gov/data/key_signup.html">here</a>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">library</span>(tidycensus)</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb15-3" title="3"></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="kw">census_api_key</span>(<span class="st">&quot;YOUR API KEY GOES HERE&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">library</span>(tidycensus)</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="kw">options</span>(<span class="dt">tigris_use_cache =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb16-4" title="4">austin_tracts &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">state =</span> <span class="st">&#39;TX&#39;</span>, <span class="dt">county =</span> <span class="st">&#39;Travis&#39;</span>, <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>,</a>
-<a class="sourceLine" id="cb16-5" title="5">                         <span class="dt">variables =</span> <span class="st">&quot;B19013_001&quot;</span>, <span class="dt">geometry =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(tidycensus)</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb13-3" title="3"></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="kw">census_api_key</span>(<span class="st">&quot;YOUR API KEY GOES HERE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;rvest&#39;:
+##   method            from
+##   read_xml.response xml2</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">options</span>(<span class="dt">tigris_use_cache =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3">austin_tracts &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">state =</span> <span class="st">&#39;TX&#39;</span>, <span class="dt">county =</span> <span class="st">&#39;Travis&#39;</span>, <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>,</a>
+<a class="sourceLine" id="cb16-4" title="4">                         <span class="dt">variables =</span> <span class="st">&quot;B19013_001&quot;</span>, <span class="dt">geometry =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2013-2017 5-year ACS</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">austin_tracts <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> estimate)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">color =</span> <span class="ot">NA</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb18-4" title="4"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">26911</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb18-5" title="5"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;magma&quot;</span>) </a></code></pre></div>
-<p><img src="AWRA_2020_R_Spatial_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 
 </div>
 <script src="js/jquery.min.js"></script>
@@ -222,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="raster-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -242,11 +244,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -261,10 +264,6 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"view": {
-"link": null,
-"text": null
-},
 "download": ["AWRA_2020_R_Spatial.pdf", "AWRA_2020_R_Spatial.epub"],
 "toc": {
 "collapse": "subsection"
@@ -273,20 +272,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
