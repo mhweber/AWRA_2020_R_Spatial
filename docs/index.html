@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2020-02-25" />
+<meta name="date" content="2020-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,15 +148,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-agenda"><i class="fa fa-check"></i><b>1.1</b> Workshop agenda</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.2</b> Spatial Data in R</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#code-along"><i class="fa fa-check"></i><b>1.3</b> Code along</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.3.1</b> geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.3.2</b> interactive mapping</a></li>
-<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.3.3</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quick-r-basics-review"><i class="fa fa-check"></i><b>1.1</b> Quick R basics review</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workshop-data-and-logistics"><i class="fa fa-check"></i><b>1.2</b> Workshop Data and Logistics</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.3</b> Spatial Data in R</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#code-along"><i class="fa fa-check"></i><b>1.4</b> Code along</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.4.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.4.2</b> Interactive mapping</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.4.3</b> Choropleth map</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#challenge-does-this-work"><i class="fa fa-check"></i><b>1.4</b> Challenge: Does this work?</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.1</b> Answer</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#challenge-does-this-work"><i class="fa fa-check"></i><b>1.5</b> Challenge: Does this work?</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.5.1</b> Answer</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>2</b> Vector data with sf</a></li>
@@ -195,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Fundamentals of Spatial Analysis in R</h1>
 <p class="author"><em>Marc Weber</em></p>
-<p class="date"><em>2020-02-25</em></p>
+<p class="date"><em>2020-02-28</em></p>
 </div>
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -210,41 +211,155 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>i.e. <code>ggplot2</code>, <code>dplyr</code>, <code>readr</code>, <code>tidyr</code>, the pipe operator %&gt;%</li>
 </ul></li>
+<li>Very basic familiarity with RMarkdown and with git</li>
 <li>If these are new, don’t sweat it - google them, we’ll talk through them as we go if needed</li>
 </ul></li>
-<li><p>This portion of workshop expectation no expectation of experience with spatial in R - we’ll cover all the basics</p></li>
+<li><p>This portion of workshop there no expectation of experience with spatial in R - if you already have some, you are sure to pick up new tricks - if you don’t, we’ll cover all the basics</p></li>
 </ul>
 <p>What is R and why should we use R for spatial analysis? Let’s break that into two questions - first, what is R and why should we use it?</p>
 <ul>
 <li>A language and environment for statistical computing and graphics</li>
 <li>R is lightweight, free, open-source and cross-platform</li>
-<li>Works with contributed packages - currently 12,938 -extensibility</li>
+<li>Works with contributed packages - currently 15,362 - extensibility</li>
 <li>Automation and recording of workflow (reproducibility)</li>
 <li>Optimized work flow - data manipulation, analysis and visualization all in one place</li>
 <li>R does not alter underlying data - manipulation and visualization in memory</li>
 <li>R is great for repetetive graphics</li>
 </ul>
+<p>Second, why use R for spatial, or GIS, work?</p>
+<ul>
+<li>Spatial and statistical analysis in one environment</li>
+<li>Leverage statistical power of R (i.e. modeling spatial data, data visualization, statistical exploration)</li>
+<li>Can handle vector and raster data, as well as work with spatial databases and pretty much any data format spatial data comes in</li>
+<li>R’s GIS capabilities growing rapidly right now - new packages added monthly - currently about 200 spatial packages (depending on how you categorize)</li>
+</ul>
+<p>Some drawbacks to using R for GIS work</p>
+<ul>
+<li>R not as good for interactive use as desktop GIS applications like ArcGIS or QGIS (i.e. editing features, panning, zooming, and analysis on selected subsets of features)</li>
+<li>Explicit coordinate system handling by the user, no on-the-fly projection support</li>
+<li>In memory analysis does not scale well with large GIS vector and tabular data</li>
+<li>Steep learning curve</li>
+<li>Up to you to find packages to do what you need - help not always great</li>
+</ul>
+<div id="quick-r-basics-review" class="section level2">
+<h2><span class="header-section-number">1.1</span> Quick R basics review</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">getwd</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;F:/GitProjects/AWRA_2020_R_Spatial&quot;</code></pre>
+<p>Which should return something like:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">[<span class="dv">1</span>] <span class="st">&quot;/home/marc/GitProjects/AWRA_GIS_R_Workshop&quot;</span></a></code></pre></div>
+<p>To see what is in the directory:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">dir</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;_after_body.html&quot;          &quot;_book&quot;                    
+##  [3] &quot;_bookdown.yml&quot;             &quot;_bookdown_files&quot;          
+##  [5] &quot;_output.yml&quot;               &quot;02-vector.Rmd&quot;            
+##  [7] &quot;03-raster.Rmd&quot;             &quot;04-application.Rmd&quot;       
+##  [9] &quot;05-summary.Rmd&quot;            &quot;06-references.Rmd&quot;        
+## [11] &quot;AWRA_2020_R_Spatial.Rmd&quot;   &quot;AWRA_2020_R_Spatial.Rproj&quot;
+## [13] &quot;AWRA_2020_R_Spatial_files&quot; &quot;book.bib&quot;                 
+## [15] &quot;css&quot;                       &quot;docs&quot;                     
+## [17] &quot;images&quot;                    &quot;index.Rmd&quot;                
+## [19] &quot;js&quot;                        &quot;packages.bib&quot;             
+## [21] &quot;preamble.tex&quot;              &quot;README.md&quot;</code></pre>
+<p>To establish a different directory:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">setwd</span>(<span class="st">&quot;/home/marc/GitProjects&quot;</span>)</a></code></pre></div>
+<div id="terminology-data-structures" class="section level4">
+<h4><span class="header-section-number">1.1.0.1</span> <strong>Terminology: data structures</strong></h4>
+<p>R is an interpreted language (access through a command-line interpreter) with a number of data structures (vectors, matrices, arrays, data frames, lists) and extensible objects (regression models, time-series, geospatial coordinates) and supports procedural programming with functions.</p>
+<p>To learn about objects, become friends with the built-in <code>class</code> and <code>str</code> functions. Let’s explore the built-in iris data set to start:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">class</span>(iris)</a></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">str</span>(iris)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>As we can see, <code>iris</code> is a data frame and is used extensively for beginning tutorials on learning R. Data frames consist of rows of observations on columns of values for variables of interest - they are one of the fundamental and most important data structures in R.</p>
+<p>But as we see in the result of str(iris) above, following the information that iris is a data frame with 150 observations of 5 variables, we get information on each of the variables, in this case that 4 are numeric and one is a factor with three levels.</p>
+<p>First off, R has several main data types:</p>
+<ul>
+<li>logical</li>
+<li>integer</li>
+<li>double</li>
+<li>complex</li>
+<li>character</li>
+<li>raw</li>
+<li>list</li>
+<li>NULL</li>
+<li>closure (function)</li>
+<li>special</li>
+<li>builtin (basic functions and operators)</li>
+<li>environment</li>
+<li>S4 (some S4 objects)</li>
+<li>others you won’t run into at user level</li>
+</ul>
+<p>We can ask what data type something is using <code>typeof</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">typeof</span>(iris)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">[<span class="dv">1</span>] <span class="st">&quot;list&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">typeof</span>(iris<span class="op">$</span>Sepal.Length)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">[<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">typeof</span>(iris<span class="op">$</span>Specis)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">[<span class="dv">1</span>] <span class="st">&quot;integer&quot;</span></a></code></pre></div>
+<p>We see a couple interesting things here - <code>iris</code>, which we just said is a data frame, is a data type of <code>list</code>. <code>Sepal.Length</code> is data type <code>double</code>, and in <code>str(iris)</code> we saw it was numeric - that makes sense - but we see that <code>Species</code> is data type <code>integer</code>, and in <code>str(iris)</code> we were told this variable was a factor with three levels. What’s going on here?</p>
+<p>First off, <code>class</code> refers to the abstract type of an object in R, whereas <code>typeof</code> or <code>mode</code> refer to how an object is stored in memory. So iris is an object of class <code>data.frame</code>, but it is stored in memory as a list (i.e. each column is an item in a list). Note that this allows data frames to have columns of different classes, whereas a matrix needs to be all of the same mode.</p>
+<p>For our <code>Species</code> column, We see it’s <code>mode</code> is numeric, it’s <code>typeof</code> is <code>integer</code>, and it’s class is <code>factor</code>. Nominal variables in R are treated as a vector of integers 1:k, where k is the number of unique values of that nominal variable and a mapping of the character strings to these integer values.</p>
+<p>This allows us to quickly see see all the unique values of a particular nominal variable or quickly re-asign a level of a nominal variable to a new value - remember, everything in R is in memory, so don’t worry about tweaking the data!</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">levels</span>(iris<span class="op">$</span>Species)</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="kw">levels</span>(iris<span class="op">$</span>Species)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;sibirica&#39;</span></a></code></pre></div>
+<p>See if you can explain how that re-asignment we just did worked.</p>
+<p>To access particular columns in a data frame, as we saw above, we use the <code>$</code> operator - we can see the value for <code>Species</code> for each observation in `iris by doing:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">iris<span class="op">$</span>Species</a></code></pre></div>
+<p>To access particular columns or rows of a data frame, we use indexing:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">iris[<span class="dv">1</span>,<span class="dv">3</span>] <span class="co"># the 1st row and the 3rd column</span></a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">[<span class="dv">1</span>] <span class="fl">1.4</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">iris[<span class="dv">4</span>,<span class="dv">5</span>] <span class="co"># the 4th row and the 5th column</span></a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">[<span class="dv">1</span>] sibirica</a>
+<a class="sourceLine" id="cb22-2" title="2">Levels<span class="op">:</span><span class="st"> </span>sibirica versicolor virginica</a></code></pre></div>
+<p>A handy function is <code>names</code>, which you can use to get or to set data frame variable names:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">names</span>(iris)</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">names</span>(iris)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;Length of Sepal&#39;</span></a></code></pre></div>
+<p>Explain what this last line did</p>
+</div>
+<div id="overview-of-classes-and-methods" class="section level4">
+<h4><span class="header-section-number">1.1.0.2</span> <strong>Overview of Classes and Methods</strong></h4>
+<ul>
+<li>Class: object types
+<ul>
+<li><code>class()</code>: gives the class type</li>
+<li><code>typeof()</code>: information on how the object is stored</li>
+<li><code>str()</code>: how the object is structured</li>
+</ul></li>
+<li>Method: generic functions
+<ul>
+<li><code>print()</code></li>
+<li><code>plot()</code></li>
+<li>`summary()</li>
+</ul></li>
+</ul>
 <div class="figure"><span id="fig:my-fig"></span>
-<img src="images/History%20of%20R.png" alt="History of R" width="352" />
+<img src="images/History%20of%20R.png" alt="History of R" width="150%" />
 <p class="caption">
 Figure 1.1: History of R
 </p>
 </div>
-<div id="workshop-agenda" class="section level2">
-<h2><span class="header-section-number">1.1</span> Workshop agenda</h2>
+</div>
+</div>
+<div id="workshop-data-and-logistics" class="section level2">
+<h2><span class="header-section-number">1.2</span> Workshop Data and Logistics</h2>
 </div>
 <div id="spatial-data-in-r" class="section level2">
-<h2><span class="header-section-number">1.2</span> Spatial Data in R</h2>
+<h2><span class="header-section-number">1.3</span> Spatial Data in R</h2>
 </div>
 <div id="code-along" class="section level2">
-<h2><span class="header-section-number">1.3</span> Code along</h2>
-<p>Just a sampling of what we’ll cover. Run code, examine output, ask any questions - we’ll explore it all in more detail through the morning.</p>
+<h2><span class="header-section-number">1.4</span> Code along</h2>
+<p>Just a sampling of things we’ll cover. Run code, examine output, ask any questions - we’ll explore it all in more detail through the morning.</p>
 <div id="geocoding-example-with-tmaptools-using-open-street-map" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> geocoding example with tmaptools using open street map</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># uses OSM</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(tmap)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(tmaptools)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<h3><span class="header-section-number">1.4.1</span> Geocoding example with tmaptools using open street map</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co"># uses OSM</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="kw">library</span>(tmap)</a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="kw">library</span>(tmaptools)</a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -253,9 +368,9 @@ Figure 1.1: History of R
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">tex_cap &lt;-tmaptools<span class="op">::</span><span class="kw">geocode_OSM</span>(<span class="st">&quot;Texas Capital&quot;</span>, </a>
-<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">as.sf =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">tex_cap &lt;-tmaptools<span class="op">::</span><span class="kw">geocode_OSM</span>(<span class="st">&quot;Texas Capital&quot;</span>, </a>
+<a class="sourceLine" id="cb28-2" title="2">        <span class="dt">as.sf =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="st">  </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 1
 ## Variables: 8
 ## $ query    &lt;chr&gt; &quot;Texas Capital&quot;
@@ -268,22 +383,22 @@ Figure 1.1: History of R
 ## $ geometry &lt;POINT [°]&gt; POINT (-64.22844 -31.46748)</code></pre>
 </div>
 <div id="interactive-mapping" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> interactive mapping</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">library</span>(mapview)</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">mapview</span>(tex_cap)</a></code></pre></div>
-<div id="htmlwidget-f466be48f8a16dac5b8f" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f466be48f8a16dac5b8f">{"x":{"options":{"minZoom":1,"maxZoom":100,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",1,"CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter",2,"CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenStreetMap",3,"OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",4,"Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenTopoMap",5,"OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"createMapPane","args":["point",440]},{"method":"addCircleMarkers","args":[-31.4674813,-64.2284407,6,null,"tex_cap",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"point","stroke":true,"color":"#333333","weight":2,"opacity":0.9,"fill":true,"fillColor":"#6666FF","fillOpacity":0.6},null,null,"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"lib/popup/popup.css\"><\/head><body><div class=\"scrollableContainer\"><table class=\"popup scrollable\" id=\"popup\"><tr class='coord'><td><\/td><td><b>Feature ID<\/b><\/td><td align='right'>1&emsp;<\/td><\/tr><tr class='alt'><td>1<\/td><td><b>query&emsp;<\/b><\/td><td align='right'>Texas Capital&emsp;<\/td><\/tr><tr><td>2<\/td><td><b>lat&emsp;<\/b><\/td><td align='right'>-31.4674813&emsp;<\/td><\/tr><tr class='alt'><td>3<\/td><td><b>lon&emsp;<\/b><\/td><td align='right'>-64.2284407&emsp;<\/td><\/tr><tr><td>4<\/td><td><b>lat_min&emsp;<\/b><\/td><td align='right'>-31.4674849&emsp;<\/td><\/tr><tr class='alt'><td>5<\/td><td><b>lat_max&emsp;<\/b><\/td><td align='right'>-31.4674752&emsp;<\/td><\/tr><tr><td>6<\/td><td><b>lon_min&emsp;<\/b><\/td><td align='right'>-64.2299503&emsp;<\/td><\/tr><tr class='alt'><td>7<\/td><td><b>lon_max&emsp;<\/b><\/td><td align='right'>-64.2272266&emsp;<\/td><\/tr><tr><td>8<\/td><td><b>geometry&emsp;<\/b><\/td><td align='right'>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div><\/body><\/html>",{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},"1",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[-64.2284407,-31.4674813,-64.2284407,-31.4674813,"Zoom to tex_cap","<strong> tex_cap <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"tex_cap",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#6666FF"],"labels":["tex_cap"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"tex_cap","extra":null,"layerId":null,"className":"info legend","group":"tex_cap"}]}],"limits":{"lat":[-31.4674813,-31.4674813],"lng":[-64.2284407,-64.2284407]}},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      //map.on('click', function (e) {\n      //  var txt = document.querySelector('.lnlt').textContent;\n      //  console.log(txt);\n      //  //txt.innerText.focus();\n      //  //txt.select();\n      //  setClipboardText(txt);\n      //});\n\n      function setClipboardText(text){\n      var id = 'mycustom-clipboard-textarea-hidden-id';\n      var existsTextarea = document.getElementById(id);\n\n      if(!existsTextarea){\n      console.log('Creating textarea');\n      var textarea = document.createElement('textarea');\n      textarea.id = id;\n      // Place in top-left corner of screen regardless of scroll position.\n      textarea.style.position = 'fixed';\n      textarea.style.top = 0;\n      textarea.style.left = 0;\n\n      // Ensure it has a small width and height. Setting to 1px / 1em\n      // doesn't work as this gives a negative w/h on some browsers.\n      textarea.style.width = '1px';\n      textarea.style.height = '1px';\n\n      // We don't need padding, reducing the size if it does flash render.\n      textarea.style.padding = 0;\n\n      // Clean up any borders.\n      textarea.style.border = 'none';\n      textarea.style.outline = 'none';\n      textarea.style.boxShadow = 'none';\n\n      // Avoid flash of white box if rendered for any reason.\n      textarea.style.background = 'transparent';\n      document.querySelector('body').appendChild(textarea);\n      console.log('The textarea now exists :)');\n      existsTextarea = document.getElementById(id);\n      }else{\n      console.log('The textarea already exists :3')\n      }\n\n      existsTextarea.value = text;\n      existsTextarea.select();\n\n      try {\n      var status = document.execCommand('copy');\n      if(!status){\n      console.error('Cannot copy text');\n      }else{\n      console.log('The text is now on the clipboard');\n      }\n      } catch (err) {\n      console.log('Unable to copy.');\n      }\n      }\n\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+<h3><span class="header-section-number">1.4.2</span> Interactive mapping</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">library</span>(mapview)</a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">mapview</span>(tex_cap)</a></code></pre></div>
+<div id="htmlwidget-ccd85a91df09dca219e8" style="width:768px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ccd85a91df09dca219e8">{"x":{"options":{"minZoom":1,"maxZoom":100,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",1,"CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter",2,"CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenStreetMap",3,"OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",4,"Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenTopoMap",5,"OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"createMapPane","args":["point",440]},{"method":"addCircleMarkers","args":[-31.4674813,-64.2284407,6,null,"tex_cap",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"point","stroke":true,"color":"#333333","weight":2,"opacity":0.9,"fill":true,"fillColor":"#6666FF","fillOpacity":0.6},null,null,"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"lib/popup/popup.css\"><\/head><body><div class=\"scrollableContainer\"><table class=\"popup scrollable\" id=\"popup\"><tr class='coord'><td><\/td><td><b>Feature ID<\/b><\/td><td align='right'>1&emsp;<\/td><\/tr><tr class='alt'><td>1<\/td><td><b>query&emsp;<\/b><\/td><td align='right'>Texas Capital&emsp;<\/td><\/tr><tr><td>2<\/td><td><b>lat&emsp;<\/b><\/td><td align='right'>-31.4674813&emsp;<\/td><\/tr><tr class='alt'><td>3<\/td><td><b>lon&emsp;<\/b><\/td><td align='right'>-64.2284407&emsp;<\/td><\/tr><tr><td>4<\/td><td><b>lat_min&emsp;<\/b><\/td><td align='right'>-31.4674849&emsp;<\/td><\/tr><tr class='alt'><td>5<\/td><td><b>lat_max&emsp;<\/b><\/td><td align='right'>-31.4674752&emsp;<\/td><\/tr><tr><td>6<\/td><td><b>lon_min&emsp;<\/b><\/td><td align='right'>-64.2299503&emsp;<\/td><\/tr><tr class='alt'><td>7<\/td><td><b>lon_max&emsp;<\/b><\/td><td align='right'>-64.2272266&emsp;<\/td><\/tr><tr><td>8<\/td><td><b>geometry&emsp;<\/b><\/td><td align='right'>sfc_POINT&emsp;<\/td><\/tr><\/table><\/div><\/body><\/html>",{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},"1",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[-64.2284407,-31.4674813,-64.2284407,-31.4674813,"Zoom to tex_cap","<strong> tex_cap <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"tex_cap",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#6666FF"],"labels":["tex_cap"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"tex_cap","extra":null,"layerId":null,"className":"info legend","group":"tex_cap"}]}],"limits":{"lat":[-31.4674813,-31.4674813],"lng":[-64.2284407,-64.2284407]}},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      //map.on('click', function (e) {\n      //  var txt = document.querySelector('.lnlt').textContent;\n      //  console.log(txt);\n      //  //txt.innerText.focus();\n      //  //txt.select();\n      //  setClipboardText(txt);\n      //});\n\n      function setClipboardText(text){\n      var id = 'mycustom-clipboard-textarea-hidden-id';\n      var existsTextarea = document.getElementById(id);\n\n      if(!existsTextarea){\n      console.log('Creating textarea');\n      var textarea = document.createElement('textarea');\n      textarea.id = id;\n      // Place in top-left corner of screen regardless of scroll position.\n      textarea.style.position = 'fixed';\n      textarea.style.top = 0;\n      textarea.style.left = 0;\n\n      // Ensure it has a small width and height. Setting to 1px / 1em\n      // doesn't work as this gives a negative w/h on some browsers.\n      textarea.style.width = '1px';\n      textarea.style.height = '1px';\n\n      // We don't need padding, reducing the size if it does flash render.\n      textarea.style.padding = 0;\n\n      // Clean up any borders.\n      textarea.style.border = 'none';\n      textarea.style.outline = 'none';\n      textarea.style.boxShadow = 'none';\n\n      // Avoid flash of white box if rendered for any reason.\n      textarea.style.background = 'transparent';\n      document.querySelector('body').appendChild(textarea);\n      console.log('The textarea now exists :)');\n      existsTextarea = document.getElementById(id);\n      }else{\n      console.log('The textarea already exists :3')\n      }\n\n      existsTextarea.value = text;\n      existsTextarea.select();\n\n      try {\n      var status = document.execCommand('copy');\n      if(!status){\n      console.error('Cannot copy text');\n      }else{\n      console.log('The text is now on the clipboard');\n      }\n      } catch (err) {\n      console.log('Unable to copy.');\n      }\n      }\n\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
 </div>
 <div id="choropleth-map" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Choropleth map</h3>
+<h3><span class="header-section-number">1.4.3</span> Choropleth map</h3>
 <p>The package maps (automatically installed and loaded with ggplot2) provides maps of the USA, with state and county borders, that can be retrieved and converted as sf objects:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">library</span>(sf)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">library</span>(sf)</a></code></pre></div>
 <pre><code>## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">library</span>(maps)</a>
-<a class="sourceLine" id="cb10-2" title="2">counties &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(<span class="kw">map</span>(<span class="st">&quot;county&quot;</span>, <span class="dt">plot =</span> <span class="ot">FALSE</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb10-3" title="3">counties &lt;-<span class="st"> </span><span class="kw">subset</span>(counties, <span class="kw">grepl</span>(<span class="st">&quot;texas&quot;</span>, counties<span class="op">$</span>ID) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;missouri,texas&#39;</span>,counties<span class="op">$</span>ID))</a>
-<a class="sourceLine" id="cb10-4" title="4">counties<span class="op">$</span>area &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">st_area</span>(counties))</a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="kw">head</span>(counties)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">library</span>(maps)</a>
+<a class="sourceLine" id="cb33-2" title="2">counties &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(<span class="kw">map</span>(<span class="st">&quot;county&quot;</span>, <span class="dt">plot =</span> <span class="ot">FALSE</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb33-3" title="3">counties &lt;-<span class="st"> </span><span class="kw">subset</span>(counties, <span class="kw">grepl</span>(<span class="st">&quot;texas&quot;</span>, counties<span class="op">$</span>ID) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;missouri,texas&#39;</span>,counties<span class="op">$</span>ID))</a>
+<a class="sourceLine" id="cb33-4" title="4">counties<span class="op">$</span>area &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">st_area</span>(counties))</a>
+<a class="sourceLine" id="cb33-5" title="5"><span class="kw">head</span>(counties)</a></code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 2 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -297,18 +412,18 @@ Figure 1.1: History of R
 ## 2493 MULTIPOLYGON (((-94.13123 3... texas,angelina 2200352194
 ## 2494 MULTIPOLYGON (((-96.80122 2...  texas,aransas  290370313
 ## 2495 MULTIPOLYGON (((-98.42269 3...   texas,archer 2422607253</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">tm_shape</span>(counties) <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;area&quot;</span>, </a>
-<a class="sourceLine" id="cb12-3" title="3">              <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, </a>
-<a class="sourceLine" id="cb12-4" title="4">              <span class="dt">title=</span><span class="st">&quot;Texas Counties Area&quot;</span>)</a></code></pre></div>
-<p><img src="AWRA_2020_R_Spatial_files/figure-html/tmap%20example-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">tm_shape</span>(counties) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;area&quot;</span>, </a>
+<a class="sourceLine" id="cb35-3" title="3">              <span class="dt">style=</span><span class="st">&quot;quantile&quot;</span>, </a>
+<a class="sourceLine" id="cb35-4" title="4">              <span class="dt">title=</span><span class="st">&quot;Texas Counties Area&quot;</span>)</a></code></pre></div>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/tmap%20example-1.png" width="768" /></p>
 </div>
 </div>
 <div id="challenge-does-this-work" class="section level2 challenge">
-<h2><span class="header-section-number">1.4</span> Challenge: Does this work?</h2>
+<h2><span class="header-section-number">1.5</span> Challenge: Does this work?</h2>
 <p>Did my .css styling adjustment work?</p>
 <div id="answer" class="section level3 solution">
-<h3><span class="header-section-number">1.4.1</span> Answer</h3>
+<h3><span class="header-section-number">1.5.1</span> Answer</h3>
 <ol style="list-style-type: decimal">
 <li>Yes</li>
 <li>No</li>

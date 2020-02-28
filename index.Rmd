@@ -18,26 +18,170 @@ always_allow_html: true
   + Basic R objects and methods
   + `tidyverse` packages and syntax
     - i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
+  + Very basic familiarity with RMarkdown and with git
   + If these are new, don't sweat it - google them, we'll talk through them as we go if needed
-  
-- This portion of workshop expectation no expectation of experience with spatial in R - we'll cover all the basics
+- This portion of workshop there no expectation of experience with spatial in R - if you already have some, you are sure to pick up new tricks - if you don't, we'll cover all the basics
 
 What is R and why should we use R for spatial analysis? Let’s break that into two questions - first, what is R and why should we use it?
 
 - A language and environment for statistical computing and graphics
 - R is lightweight, free, open-source and cross-platform
-- Works with contributed packages - currently 12,938 -extensibility
+- Works with contributed packages - currently 15,362 - extensibility
 - Automation and recording of workflow (reproducibility)
 - Optimized work flow - data manipulation, analysis and visualization all in one place
 - R does not alter underlying data - manipulation and visualization in memory
 - R is great for repetetive graphics
 
-```{r my-fig, fig.cap="History of R", echo=FALSE}
-knitr::include_graphics("images/History of R.png")
+Second, why use R for spatial, or GIS, work?
+
+- Spatial and statistical analysis in one environment
+- Leverage statistical power of R (i.e.  modeling spatial data, data visualization, statistical exploration)
+- Can handle vector and raster data, as well as work with spatial databases and pretty much any data format spatial data comes in
+- R's GIS capabilities growing rapidly right now - new packages added monthly - currently about 200 spatial packages (depending on how you categorize)
+
+Some drawbacks to using R for GIS work
+
+- R not as good for interactive use as desktop GIS applications like ArcGIS or QGIS (i.e. editing features, panning, zooming, and analysis on selected subsets of features)
+- Explicit coordinate system handling by the user, no on-the-fly projection support
+- In memory analysis does not scale well with large GIS vector and tabular data
+- Steep learning curve
+- Up to you to find packages to do what you need - help not always great
+
+## Quick R basics review 
+
+```{r}
+getwd()
+```
+
+Which should return something like:
+```r
+[1] "/home/marc/GitProjects/AWRA_GIS_R_Workshop"
+```
+
+To see what is in the directory:
+```{r}
+dir()
+```
+
+To establish a different directory:
+```r
+setwd("/home/marc/GitProjects")
+```
+
+#### **Terminology: data structures**
+R is an interpreted language (access through a command-line interpreter) with a number of data structures (vectors, matrices, arrays, data frames, lists) and extensible objects (regression models, time-series, geospatial coordinates) and supports procedural programming with functions. 
+
+To learn about objects, become friends with the built-in `class` and `str` functions. Let's explore the built-in iris data set to start:
+
+```{r}
+class(iris)
 ```
 
 
-## Workshop agenda
+```{r}
+str(iris)
+```
+
+As we can see, `iris` is a data frame and is used extensively for beginning tutorials on learning R. Data frames consist of rows of observations  on columns of values for variables of interest - they are one of the fundamental and most important data structures in R. 
+
+But as we see in the result of str(iris) above, following the information that iris is a data frame with 150 observations of 5 variables, we get information on each of the variables, in this case that 4 are numeric and one is a factor with three levels.
+
+First off, R has several main data types:
+
+* logical
+* integer
+* double
+* complex
+* character
+* raw
+* list
+* NULL
+* closure (function)
+* special
+* builtin (basic functions and operators)
+* environment
+* S4 (some S4 objects)
+* others you won't run into at user level
+
+We can ask what data type something is using `typeof`:
+```r
+typeof(iris)
+```
+```r
+[1] "list"
+```
+```r
+typeof(iris$Sepal.Length)
+```
+```r
+[1] "double"
+```
+```r
+typeof(iris$Specis)
+```
+```r
+[1] "integer"
+```
+
+We see a couple interesting things here - `iris`, which we just said is a data frame, is a data type of `list`.  `Sepal.Length` is data type `double`, and in `str(iris)` we saw it was numeric - that makes sense - but we see that `Species` is data type `integer`, and in `str(iris)` we were told this variable was a factor with three levels.  What's going on here?
+
+First off, `class` refers to the abstract type of an object in R, whereas `typeof` or `mode` refer to how an object is stored in memory. So iris is an object of class `data.frame`, but it is stored in memory as a list (i.e. each column is an item in a list).  Note that this allows data frames to have columns of different classes, whereas a matrix needs to be all of the same mode.
+
+For our `Species` column, We see it's `mode` is numeric, it's `typeof` is `integer`, and it's class is `factor`.  Nominal variables in R are treated as a vector of integers 1:k,  where k is the number of unique values of that nominal variable and a mapping of the character strings to these integer values.  
+
+This allows us to quickly see see all the unique values of a particular nominal variable or quickly re-asign a level of a nominal variable to a new value - remember, everything in R is in memory, so don't worry about tweaking the data!
+```r
+levels(iris$Species)
+levels(iris$Species)[1] <- 'sibirica'
+```
+
+See if you can explain how that re-asignment we just did worked.
+
+To access particular columns in a data frame, as we saw above, we use the `$` operator - we can see the value for `Species` for each observation in `iris by doing:
+```r
+iris$Species
+```
+
+To access particular columns or rows of a data frame, we use indexing:
+```r
+iris[1,3] # the 1st row and the 3rd column
+```
+```r
+[1] 1.4
+```
+```r
+iris[4,5] # the 4th row and the 5th column
+```
+```r
+[1] sibirica
+Levels: sibirica versicolor virginica
+```
+
+A handy function is `names`, which you can use to get or to set data frame variable names:
+```r
+names(iris)
+names(iris)[1] <- 'Length of Sepal'
+```
+
+Explain what this last line did
+
+#### **Overview of Classes and Methods**
+
+- Class: object types
+    - `class()`: gives the class type 
+    - `typeof()`: information on how the object is stored
+    - `str()`: how the object is structured
+- Method: generic functions
+    - `print()`
+    - `plot()`
+    - `summary()
+
+
+```{r my-fig, fig.cap="History of R", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/History of R.png")
+```
+
+## Workshop Data and Logistics
 
 ## Spatial Data in R
 
@@ -46,9 +190,9 @@ knitr::include_graphics("images/History of R.png")
 
 
 ## Code along
-Just a sampling of what we'll cover.  Run code, examine output, ask any questions - we'll explore it all in more detail through the morning.
+Just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll explore it all in more detail through the morning.
 
-### geocoding example with tmaptools using open street map
+### Geocoding example with tmaptools using open street map
 
 ```{r geocode-osm example}
 # uses OSM
@@ -60,16 +204,16 @@ tex_cap <-tmaptools::geocode_OSM("Texas Capital",
   glimpse()
 ```
 
-### interactive mapping
+### Interactive mapping
 
-```{r mapview example}
+```{r mapview example, fig.width=8}
 library(mapview)
 mapview(tex_cap)
 ```
 
 ### Choropleth map
 The package maps (automatically installed and loaded with ggplot2) provides maps of the USA, with state and county borders, that can be retrieved and converted as sf objects:
-```{r tmap example}
+```{r tmap example, fig.width=8}
 library(sf)
 library(maps)
 counties <- st_as_sf(map("county", plot = FALSE, fill = TRUE))
