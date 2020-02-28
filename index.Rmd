@@ -22,6 +22,11 @@ always_allow_html: true
   + If these are new, don't sweat it - google them, we'll talk through them as we go if needed
 - This portion of workshop there no expectation of experience with spatial in R - if you already have some, you are sure to pick up new tricks - if you don't, we'll cover all the basics
 
+### Overview 
+```{r my-fig, fig.cap="History of R", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/History of R.png")
+```
+
 What is R and why should we use R for spatial analysis? Let’s break that into two questions - first, what is R and why should we use it?
 
 - A language and environment for statistical computing and graphics
@@ -176,10 +181,6 @@ Explain what this last line did
     - `plot()`
     - `summary()
 
-
-```{r my-fig, fig.cap="History of R", echo=FALSE, out.width="150%"}
-knitr::include_graphics("images/History of R.png")
-```
 
 ## Workshop Data and Logistics
 
