@@ -23,7 +23,7 @@ always_allow_html: true
 - This portion of workshop there no expectation of experience with spatial in R - if you already have some, you are sure to pick up new tricks - if you don't, we'll cover all the basics
 
 ### Overview 
-```{r my-fig, fig.cap="History of R", echo=FALSE, out.width="150%"}
+```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
 knitr::include_graphics("images/History of R.png")
 ```
 
@@ -184,9 +184,16 @@ Explain what this last line did
 
 ## Workshop Data and Logistics
 
+- Downloading content via Github
+- Using RMarkdown and RStudio
+- Schedule
+
 ## Spatial Data in R
 
-
+Moving on from sp
+```{r, fig.cap="History of R", echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/Prehistoric.jpg")
+```
 
 
 

@@ -1,5 +1,11 @@
 # Vector data with sf
 
+- Some key aspects of sf
+
+```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/Sticky.png")
+```
+
 Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html).
 ```{r eval=FALSE}
 library(tidycensus)
