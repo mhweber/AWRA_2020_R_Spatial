@@ -2,7 +2,7 @@
 
 - Some key aspects of sf
 
-```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
+```{r, fig.cap="Sticky geometry with `sf`", echo=FALSE, out.width="150%"}
 knitr::include_graphics("images/Sticky.png")
 ```
 

@@ -191,7 +191,7 @@ Explain what this last line did
 ## Spatial Data in R
 
 Moving on from sp
-```{r, fig.cap="History of R", echo=FALSE, out.width="100%"}
+```{r, fig.cap="Moving on from `sp`", echo=FALSE, out.width="75%"}
 knitr::include_graphics("images/Prehistoric.jpg")
 ```
 
