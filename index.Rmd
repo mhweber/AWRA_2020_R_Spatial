@@ -10,9 +10,10 @@ always_allow_html: true
 
 # Introduction {#intro}
 
-- A bit about me
-- Intros
-- What is everyone's experience level?
+```{r, fig.cap="Raster Data", echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/WordCloud.png")
+```
+
 - What are you expected to know?
   
   + Basic R objects and methods
@@ -190,12 +191,75 @@ Explain what this last line did
 
 ## Spatial Data in R
 
+We can represent spatial data as discrete locations (points, lines or polygons) or as a grid of values rendered on a map as pixels. We typically represent the former type of data (discrete locations) as *vector* data, with an associated geometry or shape, and some attributes with information about the locations. Examples are:
+
+- state boundaries with state name and population
+- rivers with their flow volume and names
+- polygons of watersheds with their names and associated landscape information
+
+We represent the latter type of data (a grid of values as pixels) with *rasters*.  Rasters can be continous (i.e. elevation, precipitation, atmospheric deposition) or they can be categorical (i.e. land use, soil type) - they can also be image based rasters, and they can be single band or multi-band.
+
+```{r, fig.cap="Raster Data", echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/Rasters4.png")
+```
+
+We will delve into working with each of these types of data in their own sections, but let's go over how these spatial data types are handled in R briefly.
+
+Basic data structures in R can represent spatial data - all we need is some vectors with location and attribute information - below we generate cites with population, add a polygon, and make a map with a legend - take a minute to run this code in your own R session and make sure you understand what each line is doing.
+
+```{r basic spatial data structures example}
+cities <- c('Ashland','Corvallis','Bend','Portland','Newport')
+longitude <- c(-122.699, -123.275, -121.313, -122.670, -124.054)
+latitude <- c(42.189, 44.57, 44.061, 45.523, 44.652)
+population <- c(20062,50297,61362,537557,9603)
+locs <- cbind(longitude, latitude) 
+plot(locs, cex=sqrt(population*.0002), pch=20, col='red', 
+  main='Population', xlim = c(-124,-120.5), ylim = c(42, 46))
+text(locs, cities, pos=4)
+
+# Add a legend
+breaks <- c(20000, 50000, 60000, 100000)
+options(scipen=3)
+legend("topright", legend=breaks, pch=20, pt.cex=1+breaks/20000, 
+  col='red', bg='gray')
+
+# Add polygon
+lon <- c(-123.5, -123.5, -122.5, -122.670, -123)
+lat <- c(43, 45.5, 44, 43, 43)
+x <- cbind(lon, lat)
+polygon(x, border='blue')
+lines(x, lwd=3, col='red')
+points(x, cex=2, pch=20)
+```
+
+We can see in this toy example that numeric vectors can represent locations in R for simple mapping. Points just need to be a pair of numbers in cartesian space, and lines and polygons are just a number of these points (note that polygons are closed by having their first point coincide with last point which the polygon function in base R graphics takes care of).
+
+You can do simple things with this spatial representation using basic R structures, but it breaks down quickly if you want to ask any spatial questions - for instance using the example above, how would we figure out the nearest city to Corvallis? Or imagine the polygon is a county and we wanted to know what cities are within the county?
+
+### Challenge {.challenge}
+
+What information do we need to properly define spatial vector data and perform spatial operations?
+
+### Answer {.solution} 
+
+- A coordinate reference system (CRS)
+- A bounding box or extent
+- Methods for storing and accessing spatial attributes of data
+- ?
+
+### Packages for vector and raster data in R
+
+
+
 Moving on from sp
 ```{r, fig.cap="Moving on from `sp`", echo=FALSE, out.width="75%"}
 knitr::include_graphics("images/Prehistoric.jpg")
 ```
 
 
+- will focus on `sf` for vector data
+- st_ syntax in `sf` - stands for spatiotemporal, same convention as in PostGIS
+- will focus on `raster` package for raster data and introduce `stars` - short for 'spatio-temporal arrays' - package.  Deals with raster AND vector 'datacubes'
 
 ## Code along
 Just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll explore it all in more detail through the morning.
