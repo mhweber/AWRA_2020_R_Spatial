@@ -9,10 +9,13 @@ always_allow_html: true
 ---
 
 # Introduction {#intro}
+- A bit about me
 
 ```{r, fig.cap="Raster Data", echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/WordCloud.png")
 ```
+
+- A bit about you
 
 - What are you expected to know?
   
@@ -21,7 +24,7 @@ knitr::include_graphics("images/WordCloud.png")
     - i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
   + Very basic familiarity with RMarkdown and with git
   + If these are new, don't sweat it - google them, we'll talk through them as we go if needed
-- This portion of workshop there no expectation of experience with spatial in R - if you already have some, you are sure to pick up new tricks - if you don't, we'll cover all the basics
+- This portion of workshop there is no expectation of experience with spatial analyisis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover all the basics
 
 ### Overview 
 ```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
@@ -55,7 +58,7 @@ Some drawbacks to using R for GIS work
 
 ## Quick R basics review 
 
-```{r}
+```{r, eval=FALSE}
 getwd()
 ```
 
@@ -90,7 +93,7 @@ str(iris)
 
 As we can see, `iris` is a data frame and is used extensively for beginning tutorials on learning R. Data frames consist of rows of observations  on columns of values for variables of interest - they are one of the fundamental and most important data structures in R. 
 
-But as we see in the result of str(iris) above, following the information that iris is a data frame with 150 observations of 5 variables, we get information on each of the variables, in this case that 4 are numeric and one is a factor with three levels.
+But as we see in the result of `str(iris)` above, following the information that `iris` is a data frame with 150 observations of 5 variables, we get information on each of the variables, in this case that 4 are numeric and one is a factor with three levels.
 
 First off, R has several main data types:
 
@@ -249,7 +252,20 @@ What information do we need to properly define spatial vector data and perform s
 
 ### Packages for vector and raster data in R
 
+```{r spatial packages}
+# devtools::install_github("metacran/cranlogs")
+library(cranlogs)
+library(ggplot2)
+library(lubridate)
+library(dplyr)
+options(scipen=3)
+stats <- cran_downloads(from = "2018-01-01", to = "2020-04-01",packages = c("sp", "sf", "raster", "tmap", "mapview", "ggmap", "stars"))
 
+monthly_stats <- stats %>% 
+  group_by(month=floor_date(date, "month"), package) %>%
+  summarize(amount=sum(count))
+ggplot(monthly_stats, aes(x=month, y=amount, group = package, colour = package)) + geom_line(size=1.5) + scale_colour_brewer(palette="Set1")
+```
 
 Moving on from sp
 ```{r, fig.cap="Moving on from `sp`", echo=FALSE, out.width="75%"}
