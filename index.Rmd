@@ -267,24 +267,46 @@ What information do we need to properly define spatial vector data and perform s
 - Methods for storing and accessing spatial attributes of data
 - ?
 
-### Packages for vector and raster data in R
+### R Spatial Package Landscape
 
-```{r spatial packages}
+```{r spatial packages, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 # devtools::install_github("metacran/cranlogs")
-library(cranlogs)
-library(ggplot2)
-library(lubridate)
-library(dplyr)
+library(cranlogs, quietly = T)
+library(ggplot2, quietly = T)
+library(lubridate, quietly = T)
+library(dplyr, quietly = T)
 options(scipen=3)
-stats <- cran_downloads(from = "2018-01-01", to = "2020-04-01",packages = c("sp", "sf", "raster", "tmap", "mapview", "ggmap", "stars"))
+stats <- cran_downloads(from = "2018-01-01", to = "2020-04-01",packages = c("sp", "sf", "raster", "tmap", "mapview", "leaflet","ggmap", "stars"))
 
 monthly_stats <- stats %>% 
   group_by(month=floor_date(date, "month"), package) %>%
   summarize(amount=sum(count))
-ggplot(monthly_stats, aes(x=month, y=amount, group = package, colour = package)) + geom_line(size=1.5) + scale_colour_brewer(palette="Set1")
+ggplot(monthly_stats, aes(x=month, y=amount, group = package, colour = package)) + geom_line(size=1.5) + scale_colour_brewer(palette="Set1") + ggtitle("R Monthly Spatial Package \n Downloads since 2018")
 ```
 
-Moving on from sp
+### How did we make this figure? {.challenge}
+
+Look at answer below, run code in your own code editor, see if it makes sense and ask questions
+
+### Answer {.solution} 
+
+```{r spatial packages 2, eval=FALSE}
+# devtools::install_github("metacran/cranlogs")
+library(cranlogs, quietly = T)
+library(ggplot2, quietly = T)
+library(lubridate, quietly = T)
+library(dplyr, quietly = T)
+options(scipen=3)
+stats <- cran_downloads(from = "2018-01-01", to = "2020-04-01",packages = c("sp", "sf", "raster", "tmap", "mapview", "leaflet", "ggmap", "stars"))
+
+monthly_stats <- stats %>% 
+  group_by(month=floor_date(date, "month"), package) %>%
+  summarize(amount=sum(count))
+ggplot(monthly_stats, aes(x=month, y=amount, group = package, colour = package)) + geom_line(size=1.5) + scale_colour_brewer(palette="Set1") + ggtitle("R Monthly Spatial Package \n Downloads since 2018")
+```
+
+### Primary R spatial packages
+
 ```{r, fig.cap="Moving on from `sp`", echo=FALSE, out.width="75%"}
 knitr::include_graphics("images/Prehistoric.jpg")
 ```
@@ -304,6 +326,7 @@ The [R Spatial Task View page](https://cran.r-project.org/web/views/Spatial.html
 Hhere is just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll delve into specifc topics in more detail throughout the morning.
 
 ### Geocoding example with tmaptools using open street map
+Here we'll use the `tmap` package and `tmaptools` to 'geocode' a named feature in OpenStreetMap import it into our R session as an `sf` feature.
 
 ```{r geocode-osm example}
 # uses OSM
@@ -314,6 +337,26 @@ tex_cap <-tmaptools::geocode_OSM("Texas Capital",
         as.sf = TRUE) %>% 
   glimpse()
 ```
+
+### Run and examine code chunk above {.challenge}
+
+1. What is the double colon doing?
+2. What is the `geocode_OSM` function doing?
+3. Explain how the code runs together using the `%>%` chaining operator
+4. What is `glimpse`?  Is it useful compared to `head` function? 
+
+
+### Answer {.solution} 
+1. It specifies using `geocode_OSM` from the `tmaptools` package. R gives namespace preference to packages in order loaded; some packages share function names; so it's good practice to disambiguate your functions with the double-colon
+2. It is looking up a named feature in OpenStreetMap and returning the coordinates (bonus - we'll delve into more in next section - what coordinate reference system are coordinates in and how to you find out?)
+3. You would translate code using the `>%>` operator from:
+  - do this `%>%` do that `%>%`  do that
+  
+  To
+  
+  - do this *then* do that *then* do that
+4. Technically, it's a transposed version of `print` - columns run down page, data across like rows - it additionally gives you the number of observations and variables, and the data type of each column
+  - bonus: how would you quickly learn more about `glimpse` from the console?
 
 ### Interactive mapping
 
@@ -337,5 +380,3 @@ tm_shape(counties) +
               style="quantile", 
               title="Texas Counties Area")
 ```
-
-

@@ -42,3 +42,5 @@ How would we read this file into an `sf` data frame using chained operation?
 ```{r}
 (file %>% read_sf() -> nc)
 ```
+
+A question to use on a spatial tibble - What type of object is ''?  If you `run head()` does it behave the way you're used to seeing `head` function?  How might you get the behavior you're used to seeing from `head` with ''
