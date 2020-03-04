@@ -9,9 +9,8 @@ always_allow_html: true
 ---
 
 # Introduction {#intro}
-- A bit about me
 
-```{r, fig.cap="Raster Data", echo=FALSE, out.width="100%"}
+```{r, fig.cap="A bit about me", echo=FALSE, out.width="100%"}
 knitr::include_graphics("images/WordCloud.png")
 ```
 
@@ -25,6 +24,12 @@ knitr::include_graphics("images/WordCloud.png")
   + Very basic familiarity with RMarkdown and with git
   + If these are new, don't sweat it - google them, we'll talk through them as we go if needed
 - This portion of workshop there is no expectation of experience with spatial analyisis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover all the basics
+
+## Workshop Data and Logistics
+- Packages you need installed
+- Downloading content via Github
+- Using RMarkdown and RStudio
+- Schedule
 
 ### Overview 
 ```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
@@ -56,7 +61,7 @@ Some drawbacks to using R for GIS work
 - Steep learning curve
 - Up to you to find packages to do what you need - help not always great
 
-## Quick R basics review 
+## R Basics Review 
 
 ```{r, eval=FALSE}
 getwd()
@@ -190,13 +195,6 @@ Another handy technique is passing R statements surrounded by parens - this both
     - `plot()`
     - `summary()
 
-
-## Workshop Data and Logistics
-
-- Downloading content via Github
-- Using RMarkdown and RStudio
-- Schedule
-
 ## Spatial Data in R
 
 We can represent spatial data as discrete locations (points, lines or polygons) or as a grid of values rendered on a map as pixels. We typically represent the former type of data (discrete locations) as *vector* data, with an associated geometry or shape, and some attributes with information about the locations. Examples are:
@@ -215,7 +213,7 @@ We will delve into working with each of these types of data in their own section
 
 Basic data structures in R can represent spatial data - all we need is some vectors with location and attribute information - below we generate cites with population, add a polygon, and make a map with a legend - take a minute to run this code in your own R session and make sure you understand what each line is doing.
 
-```{r basic spatial data structures example}
+```{r basic spatial data structures vector}
 cities <- c('Ashland','Corvallis','Bend','Portland','Newport')
 longitude <- c(-122.699, -123.275, -121.313, -122.670, -124.054)
 latitude <- c(42.189, 44.57, 44.061, 45.523, 44.652)
@@ -242,7 +240,21 @@ points(x, cex=2, pch=20)
 
 We can see in this toy example that numeric vectors can represent locations in R for simple mapping. Points just need to be a pair of numbers in cartesian space, and lines and polygons are just a number of these points (note that polygons are closed by having their first point coincide with last point which the polygon function in base R graphics takes care of).
 
-You can do simple things with this spatial representation using basic R structures, but it breaks down quickly if you want to ask any spatial questions - for instance using the example above, how would we figure out the nearest city to Corvallis? Or imagine the polygon is a county and we wanted to know what cities are within the county?
+What about raster data?  A raster in essence is simply a matrix of values for raster cells
+
+```{r basic spatial data structures raster}
+library('plot.matrix')
+# numeric matrix
+x <- matrix(runif(35), ncol=5) # create a numeric matrix object
+class(x)
+#> [1] "matrix"
+par(mar=c(5.1, 4.1, 4.1, 4.1)) # adapt margins
+plot(x)
+```
+
+We have a 'raster' of cell values in columnns and rows - but what is lacking?
+
+You can do simple things with these spatial representations using basic R structures, but it breaks down quickly if you want to ask any spatial questions - for instance using the first example above, how would we figure out the nearest city to Corvallis? Or imagine the polygon is a county and we wanted to know what cities are within the county? Or how would we superimpose our cities on our raster cells?  Or extract the value of a cell at the location of a city?
 
 ### Challenge {.challenge}
 
@@ -277,8 +289,19 @@ Moving on from sp
 knitr::include_graphics("images/Prehistoric.jpg")
 ```
 
+`sp` was the core vector spatial data package in R for a number of years, and while still used and while many packages still depend on the package, we will make a clean break in this workshop and focus entirely on the new `sf` package for working with vector data.
+
+This portion of the workshop will focus primarily on the following core packages for working with spatial data in R:
+- `sf` - The core package for working with vector data in R
+- `raster` - Still the primary spatial package for working with raster data in R
+- `mapview` - this is a wrapper package for R `leaflet` package and I find simpler and more intuitive
+- `ggolot` and `tmap` -  static plotting and thematic maping
+- `dplyr` - Not a spatial package, but `sf` is "tidy-compliant" and we will follow "tidy" workflows in this portion of the workshop for much or our examples
+
+The [R Spatial Task View page](https://cran.r-project.org/web/views/Spatial.html) provides current and comprehensive information on the ecosystem of R packages for working with spatial data - there are hundreds out there for specific tasks - we'll touch on several others besides core packages above this morning.
+
 ## Code along
-Just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll explore it all in more detail through the morning.
+Hhere is just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll delve into specifc topics in more detail throughout the morning.
 
 ### Geocoding example with tmaptools using open street map
 
@@ -314,18 +337,5 @@ tm_shape(counties) +
               style="quantile", 
               title="Texas Counties Area")
 ```
-### Challenge: Chained spatial operation {.challenge}
 
-Earlier we showed example of printing and storing a statement using parens
-```{r}
-(file <- system.file("gpkg/nc.gpkg", package='sf'))
-```
-How would we read this file into an `sf` data frame using chained operation?
-
-
-### Answer {.solution} 
-
-```{r}
-(file %>% read_sf() -> nc)
-```
 
