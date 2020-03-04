@@ -170,6 +170,11 @@ names(iris)[1] <- 'Length of Sepal'
 
 Explain what this last line did
 
+Another handy technique is passing R statements surrounded by parens - this both prints and stores the result of the statement.
+```{r}
+(file <- system.file("gpkg/nc.gpkg", package='sf'))
+```
+
 #### **Overview of Classes and Methods**
 
 - Class: object types
@@ -194,8 +199,6 @@ Moving on from sp
 ```{r, fig.cap="Moving on from `sp`", echo=FALSE, out.width="75%"}
 knitr::include_graphics("images/Prehistoric.jpg")
 ```
-
-
 
 ## Code along
 Just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll explore it all in more detail through the morning.
@@ -234,14 +237,18 @@ tm_shape(counties) +
               style="quantile", 
               title="Texas Counties Area")
 ```
+### Challenge: Chained spatial operation {.challenge}
 
+Earlier we showed example of printing and storing a statement using parens
+```{r}
+(file <- system.file("gpkg/nc.gpkg", package='sf'))
+```
+How would we read this file into an `sf` data frame using chained operation?
 
-
-## Challenge: Does this work? {.challenge}
-
-Did my .css styling adjustment work?
 
 ### Answer {.solution} 
 
-1. Yes
-2. No
+```{r}
+(file %>% read_sf() -> nc)
+```
+
