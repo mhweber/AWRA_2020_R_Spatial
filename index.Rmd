@@ -14,8 +14,6 @@ always_allow_html: true
 knitr::include_graphics("images/WordCloud.png")
 ```
 
-- A bit about you
-
 - What are you expected to know?
   
   + Basic R objects and methods
@@ -23,10 +21,21 @@ knitr::include_graphics("images/WordCloud.png")
     - i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
   + Very basic familiarity with RMarkdown and with git
   + If these are new, don't sweat it - google them, we'll talk through them as we go if needed
-- This portion of workshop there is no expectation of experience with spatial analyisis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover all the basics
+- This portion of workshop there is no expectation of experience with spatial analysis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover all the basics
 
 ## Workshop Data and Logistics
 - Packages you need installed
+  + `sf`
+  + `raster`
+  + `stars`
+  + `tmap`
+  + `tmaptools`
+  + `dplyr`
+  + `devtools`
+  + [awra2020spatial](https://github.com/mhweber/awra2020spatial) - data for this workshop contained in package
+
+  
+  
 - Downloading content via Github
 - Using RMarkdown and RStudio
 - Schedule

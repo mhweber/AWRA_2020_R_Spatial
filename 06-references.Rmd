@@ -1,7 +1,6 @@
 # References {-}
 
 ### R Spatial Resources
-
 * [R Spatial - **Spatial Data Science with R**](http://rspatial.org/spatial/)
 * [**Geocomputation with R**](https://geocompr.robinlovelace.net/)
 * [**R Spatial Task View**](https://cran.r-project.org/web/views/Spatial.html)
@@ -9,13 +8,10 @@
 * [**Spatial Data Science - Pebesma and Bivand**](https://keen-swartz-3146c4.netlify.com/)
 * [**Spatial Data Science Course- Prof. Adam Wilson**](http://adamwilson.us/SpatialDataScience/index.html)
 * [**Introduction to Mapping and Spatial Analysis with R**](https://cengel.github.io/rspatial/)
-* [**Google R Style Guide**](https://google.github.io/styleguide/Rguide.xml)
-* [**Advanced R by Hadley Wickham**](http://adv-r.had.co.nz/)
+* [**R Spatial Workshop for EPA R User Group**](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2018/index.html)
 * [**Intro to GIS and Spatial Analysis by Manuel Gimond**](https://mgimond.github.io/Spatial/index.html)
 * [**FOSS4G2019 R for Geospatial Processing**](https://bakaniko.github.io/FOSS4G2019_Geoprocessing_with_R_workshop/)
 * [**An Introduction to Spatial Analysis and Mapping in R**](https://bookdown.org/lexcomber/brunsdoncomber2e/)
-
-
 
 ### R Vector Processing / Simple Features Resources
 
@@ -43,3 +39,6 @@
 * [Geocomputation with R: **Making maps with R**](https://geocompr.robinlovelace.net/adv-map.html)
 * [Ryan Peek: **Mapping in R**](https://ryanpeek.github.io/mapping-in-R-workshop/index.html)
 
+### General R Resources
+* [**Google R Style Guide**](https://google.github.io/styleguide/Rguide.xml)
+* [**Advanced R by Hadley Wickham**](http://adv-r.had.co.nz/)
