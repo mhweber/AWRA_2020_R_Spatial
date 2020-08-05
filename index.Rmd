@@ -10,26 +10,41 @@ always_allow_html: true
 
 # Introduction {#intro}
 
-```{r, fig.cap="A bit about me", echo=FALSE, out.width="100%"}
+```{r, fig.cap="A bit about me", echo=FALSE, out.width="150%"}
 knitr::include_graphics("images/WordCloud.png")
 ```
 
-- A bit about you
-
-- What are you expected to know?
+- Workshop agenda
   
-  + Basic R objects and methods
-  + `tidyverse` packages and syntax
+  + Intro and quick review of basic R objects and methods
+  + Getting spatial data into R
+  + Learning ways to map and visualize spatial data
+  + Understanding coordinate reference systems (CRS)!
+  + Along the way: overview of select `tidyverse` packages and syntax
     - i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
-  + Very basic familiarity with RMarkdown and with git
-  + If these are new, don't sweat it - google them, we'll talk through them as we go if needed
-- This portion of workshop there is no expectation of experience with spatial analyisis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover all the basics
+  + Working with vector and raster data in R
+  + If this is all new, don't sweat it - google things, we'll answer questions as we go
+- This portion of workshop there is no expectation of experience with spatial analysis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover the basics
+- We have a limited time to cover a very broad topic, so I'll move quickly - ask questions as they come up, but if you get lost on steps we'll have time for discussion at the end and material will be available to peruse at your own speed later.
 
-## Workshop Data and Logistics
+## Workshop Packages and Data
 - Packages you need installed
+  + `sf`
+  + `raster`
+  + `stars`
+  + `tmap`
+  + `tmaptools`
+  + `dplyr`
+  + `devtools`
+  + `palmerpenguins`
+  + `tigris`
+  + `tibble`
+  + [awra2020spatial](https://github.com/mhweber/awra2020spatial) - data for this workshop contained in package
+  
 - Downloading content via Github
+
 - Using RMarkdown and RStudio
-- Schedule
+
 
 ### Overview 
 ```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
@@ -68,7 +83,7 @@ getwd()
 ```
 
 Which should return something like:
-```r
+```
 [1] "/home/marc/GitProjects/AWRA_GIS_R_Workshop"
 ```
 
@@ -78,27 +93,38 @@ dir()
 ```
 
 To establish a different directory:
-```r
+```
 setwd("/home/marc/GitProjects")
 ```
 
 #### **Terminology: data structures**
 R is an interpreted language (access through a command-line interpreter) with a number of data structures (vectors, matrices, arrays, data frames, lists) and extensible objects (regression models, time-series, geospatial coordinates) and supports procedural programming with functions. 
 
-To learn about objects, become friends with the built-in `class` and `str` functions. Let's explore the built-in iris data set to start:
+To learn about objects, become friends with the built-in `class` and `str` functions. Let's explore a new dataset - [palmerpenguins](https://github.com/allisonhorst/palmerpenguins) - recently developed by Allison Horst as an alternative to the old R standby `iris` dataset:
 
 ```{r}
-class(iris)
+library(palmerpenguins)
+class(penguins)
 ```
-
 
 ```{r}
-str(iris)
+str(penguins)
 ```
 
-As we can see, `iris` is a data frame and is used extensively for beginning tutorials on learning R. Data frames consist of rows of observations  on columns of values for variables of interest - they are one of the fundamental and most important data structures in R. 
+`penguins` is a tibble and was created as a new alternative to the `iris` data set that has been used extensively for beginning tutorials on learning R. `penguins` as you can see is a [tibble](https://tibble.tidyverse.org/), which is a new `tidyverse` spin on `data frames`. Data frames consist of rows of observations  on columns of values for variables of interest - they are one of the fundamental and most important data structures in R. `tibbles` make a few improvements / changes to `data frames` such as:
 
-But as we see in the result of `str(iris)` above, following the information that `iris` is a data frame with 150 observations of 5 variables, we get information on each of the variables, in this case that 4 are numeric and one is a factor with three levels.
+  - Never converting strings to factors
+  - Never creating row names
+  - Updated print method that only shows first 10 rows, just the columns that fit on the screen, and the type of each column (just as we get using `str`)
+
+We can easily convert objects from `tibble` to `data frame` and vice versa:
+```{r}
+library(tibble)
+penguins <- as.data.frame(penguins)
+penguins <- as_tibble(penguins)
+```
+
+But as we see in the result of `str(penguins)` above, following the information that `penguins` is a `tibble` with 344 observations of 8 variables, we get information on each of the variables, in this case that 2 are numeric, 2 are integers, and 3 are factors - factors encode categorical variables - and `str` gives us the number of levels in each factor.
 
 First off, R has several main data types:
 
@@ -118,73 +144,77 @@ First off, R has several main data types:
 * others you won't run into at user level
 
 We can ask what data type something is using `typeof`:
-```r
-typeof(iris)
+```{r}
+typeof(penguins)
 ```
-```r
+```
 [1] "list"
 ```
-```r
-typeof(iris$Sepal.Length)
+```{r}
+typeof(penguins$bill_length_mm)
 ```
-```r
+```
 [1] "double"
 ```
-```r
-typeof(iris$Specis)
+```{r}
+typeof(penguins$specis)
 ```
-```r
+```
 [1] "integer"
 ```
 
-We see a couple interesting things here - `iris`, which we just said is a data frame, is a data type of `list`.  `Sepal.Length` is data type `double`, and in `str(iris)` we saw it was numeric - that makes sense - but we see that `Species` is data type `integer`, and in `str(iris)` we were told this variable was a factor with three levels.  What's going on here?
+We see a couple interesting things here - `penguins`, which we just said is a `tibble`, is a data type of `list`.  `bill_length_mm` is data type `double`, and in `str(penguins)` we saw it was numeric - that makes sense - but we see that `species` is data type `integer`, and in `str(penguins)` we were told this variable was a factor with three levels.  What's going on here?
 
-First off, `class` refers to the abstract type of an object in R, whereas `typeof` or `mode` refer to how an object is stored in memory. So iris is an object of class `data.frame`, but it is stored in memory as a list (i.e. each column is an item in a list).  Note that this allows data frames to have columns of different classes, whereas a matrix needs to be all of the same mode.
+First off, `class` refers to the abstract type of an object in R, whereas `typeof` or `mode` refer to how an object is stored in memory. So `penguins` is an object of class `tibble`, but it is stored in memory as a list (i.e. each column is an item in a list).  Note that this allows tibbles and data frames to have columns of different classes, whereas a matrix needs to be all of the same mode.
 
-For our `Species` column, We see it's `mode` is numeric, it's `typeof` is `integer`, and it's class is `factor`.  Nominal variables in R are treated as a vector of integers 1:k,  where k is the number of unique values of that nominal variable and a mapping of the character strings to these integer values.  
+For our `species` column, we see it's `mode` is numeric, it's `typeof` is `integer`, and it's class is `factor`.  Nominal variables in R are treated as a vector of integers 1:k,  where k is the number of unique values of that nominal variable and a mapping of the character strings to these integer values.  
 
 This allows us to quickly see see all the unique values of a particular nominal variable or quickly re-asign a level of a nominal variable to a new value - remember, everything in R is in memory, so don't worry about tweaking the data!
-```r
-levels(iris$Species)
-levels(iris$Species)[1] <- 'sibirica'
+
+```{r}
+levels(penguins$species)
+levels(penguins$species)[1] <- 'adeliae'
 ```
 
 See if you can explain how that re-asignment we just did worked.
 
-To access particular columns in a data frame, as we saw above, we use the `$` operator - we can see the value for `Species` for each observation in `iris by doing:
-```r
-iris$Species
+To access particular columns in a `tibble` or `data frame`, as we saw above, we use the `$` operatoe. We can see the value of `species` for each observation in `penguins` as well as listing of all levels of the variable by running:
+```{r}
+penguins$species
 ```
-
 To access particular columns or rows of a data frame, we use indexing:
-```r
-iris[1,3] # the 1st row and the 3rd column
+```{r}
+penguins[1,3] # the 1st row and the 3rd column
 ```
-```r
-[1] 1.4
 ```
-```r
-iris[4,5] # the 4th row and the 5th column
+[1] 39.1
 ```
-```r
-[1] sibirica
-Levels: sibirica versicolor virginica
+```{r}
+penguins[4,1] # the 4th row and the 1st column
+```
+```
+<fct>  
+1 Adelie
 ```
 
 A handy function is `names`, which you can use to get or to set data frame variable names:
-```r
-names(iris)
-names(iris)[1] <- 'Length of Sepal'
+```{r}
+names(penguins)
+names(penguins)[3] <- 'Bill Length'
 ```
 
 Explain what this last line did
 
-Another handy technique is passing R statements surrounded by parens - this both prints and stores the result of the statement.
+A little example of tidy evaluation and piping to do the same thing - we'll go into more:
 ```{r}
-(file <- system.file("gpkg/nc.gpkg", package='sf'))
+penguins <- penguins %>% 
+  dplyr::rename('Bill_Length'='Bill Length')
+# check it
+names(penguins)
 ```
 
-#### **Overview of Classes and Methods**
+
+#### **Review of Classes and Methods**
 
 - Class: object types
     - `class()`: gives the class type 
@@ -193,7 +223,7 @@ Another handy technique is passing R statements surrounded by parens - this both
 - Method: generic functions
     - `print()`
     - `plot()`
-    - `summary()
+    - `summary`()
 
 ## Spatial Data in R
 
@@ -322,8 +352,10 @@ This portion of the workshop will focus primarily on the following core packages
 
 The [R Spatial Task View page](https://cran.r-project.org/web/views/Spatial.html) provides current and comprehensive information on the ecosystem of R packages for working with spatial data - there are hundreds out there for specific tasks - we'll touch on several others besides core packages above this morning.
 
-## Code along
-Here is just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll delve into specifc topics in more detail throughout the morning.
+
+## Quick examples
+Here is just a sampling of few quick spatial tasks.
+>>>>>>> 3aeaae3b947da3e86b98a372cdb7eb1342a5cec9
 
 ### Geocoding example with tmaptools using open street map
 Here we'll use the `tmap` package and `tmaptools` to 'geocode' a named feature in OpenStreetMap import it into our R session as an `sf` feature.
@@ -360,14 +392,13 @@ tex_cap <-tmaptools::geocode_OSM("Texas Capital USA",
 
 
 ### Choropleth map
-The package maps (automatically installed and loaded with ggplot2) provides maps of the USA, with state and county borders, that can be retrieved and converted as sf objects:
-```{r tmap example, fig.width=8}
+The excellent `tigris` package can be used to get census boundaries such as states and counties as vector `sf` objects in R
+```{r tmap example, fig.width=8, results='hide'}
 library(sf)
-library(maps)
-counties <- st_as_sf(map("county", plot = FALSE, fill = TRUE))
-counties <- subset(counties, grepl("texas", counties$ID) & !grepl('missouri,texas',counties$ID))
+library(tigris)
+counties <- counties("Texas", cb = TRUE)
 counties$area <- as.numeric(st_area(counties))
-head(counties)
+glimpse(counties)
 
 tm_shape(counties) +
   tm_polygons("area", 
