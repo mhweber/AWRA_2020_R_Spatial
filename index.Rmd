@@ -10,8 +10,8 @@ always_allow_html: true
 
 # Introduction {#intro}
 
-```{r, fig.cap="A bit about me", echo=FALSE, out.width="100%"}
-knitr::include_graphics("images/WordCloud.PNG")
+```{r, fig.cap="A bit about me", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/WordCloud.png")
 ```
 
 - Workshop agenda
