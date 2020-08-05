@@ -323,7 +323,7 @@ This portion of the workshop will focus primarily on the following core packages
 The [R Spatial Task View page](https://cran.r-project.org/web/views/Spatial.html) provides current and comprehensive information on the ecosystem of R packages for working with spatial data - there are hundreds out there for specific tasks - we'll touch on several others besides core packages above this morning.
 
 ## Code along
-Hhere is just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll delve into specifc topics in more detail throughout the morning.
+Here is just a sampling of things we'll cover.  Run code, examine output, ask any questions - we'll delve into specifc topics in more detail throughout the morning.
 
 ### Geocoding example with tmaptools using open street map
 Here we'll use the `tmap` package and `tmaptools` to 'geocode' a named feature in OpenStreetMap import it into our R session as an `sf` feature.
@@ -333,7 +333,7 @@ Here we'll use the `tmap` package and `tmaptools` to 'geocode' a named feature i
 library(tmap)
 library(tmaptools)
 library(dplyr)
-tex_cap <-tmaptools::geocode_OSM("Texas Capital", 
+tex_cap <-tmaptools::geocode_OSM("Texas Capital USA", 
         as.sf = TRUE) %>% 
   glimpse()
 ```
@@ -358,12 +358,6 @@ tex_cap <-tmaptools::geocode_OSM("Texas Capital",
 4. Technically, it's a transposed version of `print` - columns run down page, data across like rows - it additionally gives you the number of observations and variables, and the data type of each column
   - bonus: how would you quickly learn more about `glimpse` from the console?
 
-### Interactive mapping
-
-```{r mapview example, fig.width=8}
-library(mapview)
-mapview(tex_cap)
-```
 
 ### Choropleth map
 The package maps (automatically installed and loaded with ggplot2) provides maps of the USA, with state and county borders, that can be retrieved and converted as sf objects:
@@ -380,3 +374,11 @@ tm_shape(counties) +
               style="quantile", 
               title="Texas Counties Area")
 ```
+
+### Interactive mapping
+```{r mapview example, fig.width=8}
+library(mapview)
+mapview(tex_cap, col="red", col.regions = "red") + mapview(counties, alpha.regions = .1)
+```
+
+We will look in more depth at these and other examples in following sections

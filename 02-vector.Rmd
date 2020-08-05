@@ -6,6 +6,33 @@
 knitr::include_graphics("images/Sticky.png")
 ```
 
+- Talk about the difference between `st_read` and `read_sf`.  `read_sf` uses `tidyverse`-style defaults:
+  * `quiet = TRUE`
+  * `as_tibble` = TRUE
+  * `stringsAsFactors = FALSE`
+  
+You can read many different vector data types (through `gdal`):
+- ESRI Shapefiles
+- Geopackages
+- Geojson
+- ESRI File Geodatabases
+- PostGIS databases
+- ...
+
+We can easily see which drivers and how many are available to `sf` through `gdal`:
+```{r st_drivers)}
+print(paste0('There are ',st_drivers("vector") %>% nrow(), ' vector drivers available using st_read or read_sf'))
+print('They are the following: ')
+print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
+```
+  
+- example with tigris
+```{r plot some states)}
+library(tigris)
+options(tigris_class = 'sf')
+SW_states <- tigris::states() %>% 
+  select(NAME %in% c('))
+```
 Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html).
 ```{r}
 library(sf)
