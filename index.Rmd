@@ -18,8 +18,9 @@ knitr::include_graphics("images/WordCloud.png")
   
   + Intro and quick review of basic R objects and methods
   + Getting spatial data into R
+  + Understanding vector and raster data in R and some example workflows
+  + Understanding coordinate reference systems (CRS)
   + Learning ways to map and visualize spatial data
-  + Understanding coordinate reference systems (CRS)!
   + Along the way: overview of select `tidyverse` packages and syntax
     - i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
   + Working with vector and raster data in R
