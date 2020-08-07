@@ -33,20 +33,11 @@ print('They are the following: ')
 print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
 ```
   
-- example with tigris
-```{r plot some states)}
-library(tigris)
-library(dplyr)
-options(tigris_class = 'sf')
-SW_states <- tigris::states() %>% 
-  dplyr::select(NAME %in% c('Texas'))
-```
 
 Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html).
 ```{r}
 library(sf)
 library(tidycensus)
-library(tidyverse)
 # census_api_key("YOUR API KEY GOES HERE")
 ```
 
