@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Reading in Spatial Data | Fundamentals of Spatial Analysis in R</title>
   <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Reading in Spatial Data | Fundamentals of Spatial Analysis in R" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="a-little-about-coordinate-reference-systems.html"/>
+<link rel="next" href="coordinate-reference-systems.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,9 +50,70 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="css\style.css" type="text/css" />
 <link rel="stylesheet" href="css\lesson.css" type="text/css" />
@@ -94,10 +155,10 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a></li>
-<li class="chapter" data-level="3" data-path="a-little-about-coordinate-reference-systems.html"><a href="a-little-about-coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> A little about coordinate reference systems</a></li>
+<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a></li>
 <li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a><ul>
 <li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#challenge-chained-spatial-operation"><i class="fa fa-check"></i><b>4.0.1</b> Challenge: Chained spatial operation</a></li>
-<li class="chapter" data-level="4.0.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>4.0.2</b> Answer</a></li>
+<li class="chapter" data-level="4.0.2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#answer-3"><i class="fa fa-check"></i><b>4.0.2</b> Answer</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
@@ -133,6 +194,210 @@
             <section class="normal" id="section-">
 <div id="reading-in-spatial-data" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Reading in Spatial Data</h1>
+<ul>
+<li>There are several ways we typically get spatial data into R:
+<ul>
+<li>Load spatial files we have on our machine or from remote source</li>
+<li>Load spatial data that is part of an R package</li>
+<li>Grab data using API (often making use of particular R packages)</li>
+<li>Converting flat files with x,y data to spatial data</li>
+<li>Geocoding data (we saw example of this at beginning)</li>
+</ul></li>
+</ul>
+<p>For reading and writing vector and raster data in R, the three primary packages you’ll use are:</p>
+<ul>
+<li><code>sf</code> or <code>rgdal</code> for vector formats such as <a href="https://en.wikipedia.org/wiki/Shapefile">ESRI Shapefiles</a>, <a href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON</a>, and <a href="https://en.wikipedia.org/wiki/GPS_Exchange_Format">GPX</a> - both packages use <strong>OGR</strong>, which is a library under the <a href="https://en.wikipedia.org/wiki/GDAL">GDAL</a> source tree,under the hood</li>
+<li><code>raster</code> for raster formats such as <a href="https://en.wikipedia.org/wiki/GeoTIFF">GeoTIFF</a> or <a href="https://en.wikipedia.org/wiki/Esri_grid">ESRI or ASCII grid</a> using <a href="https://en.wikipedia.org/wiki/GDAL">GDAL</a> under the hood</li>
+</ul>
+<p>We can quickly discover supported I/O vector formats either via <code>sf</code> or <code>rgdal</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(rgdal)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">kable</span>(<span class="kw">head</span>(<span class="kw">ogrDrivers</span>(),<span class="dt">n=</span><span class="dv">5</span>))</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">long_name</th>
+<th align="left">write</th>
+<th align="left">copy</th>
+<th align="left">isVector</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AeronavFAA</td>
+<td align="left">Aeronav FAA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">AmigoCloud</td>
+<td align="left">AmigoCloud</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">ARCGEN</td>
+<td align="left">Arc/Info Generate</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">AVCBin</td>
+<td align="left">Arc/Info Binary Coverage</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">AVCE00</td>
+<td align="left">Arc/Info E00 (ASCII) Coverage</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">kable</span>(<span class="kw">head</span>(<span class="kw">st_drivers</span>(<span class="dt">what=</span><span class="st">&#39;vector&#39;</span>),<span class="dt">n=</span><span class="dv">5</span>))</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">name</th>
+<th align="left">long_name</th>
+<th align="left">write</th>
+<th align="left">copy</th>
+<th align="left">is_raster</th>
+<th align="left">is_vector</th>
+<th align="left">vsi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PCIDSK</td>
+<td align="left">PCIDSK</td>
+<td align="left">PCIDSK Database File</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>netCDF</td>
+<td align="left">netCDF</td>
+<td align="left">Network Common Data Format</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td>PDS4</td>
+<td align="left">PDS4</td>
+<td align="left">NASA Planetary Data System 4</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>JP2OpenJPEG</td>
+<td align="left">JP2OpenJPEG</td>
+<td align="left">JPEG-2000 driver based on OpenJPEG library</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>JPEG2000</td>
+<td align="left">JPEG2000</td>
+<td align="left">JPEG-2000 part 1 (ISO/IEC 15444-1), based on Jasper library</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>As well as I/O raster formats via <code>sf</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">kable</span>(<span class="kw">head</span>(<span class="kw">st_drivers</span>(<span class="dt">what=</span><span class="st">&#39;raster&#39;</span>),<span class="dt">n=</span><span class="dv">5</span>))</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">name</th>
+<th align="left">long_name</th>
+<th align="left">write</th>
+<th align="left">copy</th>
+<th align="left">is_raster</th>
+<th align="left">is_vector</th>
+<th align="left">vsi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VRT</td>
+<td align="left">VRT</td>
+<td align="left">Virtual Raster</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>DERIVED</td>
+<td align="left">DERIVED</td>
+<td align="left">Derived datasets using VRT pixel functions</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td>GTiff</td>
+<td align="left">GTiff</td>
+<td align="left">GeoTIFF</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>NITF</td>
+<td align="left">NITF</td>
+<td align="left">National Imagery Transmission Format</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>RPFTOC</td>
+<td align="left">RPFTOC</td>
+<td align="left">Raster Product Format TOC format</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 <script src="js/jquery.min.js"></script>
@@ -144,7 +409,7 @@
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-little-about-coordinate-reference-systems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coordinate-reference-systems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -163,11 +428,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -179,10 +445,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },

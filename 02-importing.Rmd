@@ -1,2 +1,29 @@
 # Reading in Spatial Data
 
+- There are several ways we typically get spatial data into R:
+  + Load spatial files we have on our machine or from remote source
+  + Load spatial data that is part of an R package
+  + Grab data using API (often making use of particular R packages)
+  + Converting flat files with x,y data to spatial data
+  + Geocoding data (we saw example of this at beginning)
+
+
+For reading and writing vector and raster data in R, the three primary packages you'll use are:
+
+ * `sf` or `rgdal` for vector formats such as [ESRI Shapefiles](https://en.wikipedia.org/wiki/Shapefile),  [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), and [GPX](https://en.wikipedia.org/wiki/GPS_Exchange_Format) - both packages use **OGR**, which is a library under the [GDAL](https://en.wikipedia.org/wiki/GDAL) source tree,under the hood
+ * `raster` for raster formats such as [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) or [ESRI or ASCII grid](https://en.wikipedia.org/wiki/Esri_grid) using [GDAL](https://en.wikipedia.org/wiki/GDAL) under the hood
+ 
+We can quickly discover supported I/O vector formats either via `sf` or `rgdal`:
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(knitr)
+library(sf)
+library(rgdal)
+kable(head(ogrDrivers(),n=5))
+kable(head(st_drivers(what='vector'),n=5))
+```
+
+As well as I/O raster formats via `sf`:
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(knitr)
+kable(head(st_drivers(what='raster'),n=5))
+```
