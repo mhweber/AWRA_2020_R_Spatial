@@ -1,0 +1,179 @@
+--- 
+title: "Fundamentals of Spatial Analysis in R"
+author: "Marc Weber"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+description: "This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020."
+always_allow_html: true
+---
+
+# Introduction {#intro}
+
+Placeholder
+
+
+## Workshop Packages and Data
+### Overview 
+## R Basics Review 
+#### **Terminology: data structures**
+#### **Review of Classes and Methods**
+## Spatial Data in R
+### Challenge {.challenge}
+### Answer {.solution} 
+### R Spatial Package Landscape
+### How did we make this figure? {.challenge}
+### Answer {.solution} 
+### Primary R spatial packages
+## Quick examples
+### Geocoding example with tmaptools using open street map
+### Run and examine code chunk above {.challenge}
+### Answer {.solution} 
+### Choropleth map
+### Interactive mapping
+
+<!--chapter:end:index.Rmd-->
+
+# Reading in Spatial Data
+
+
+<!--chapter:end:02-importing.Rmd-->
+
+# Coordinate reference systems
+
+- Lesson Objectives
+  
+  + Describe and understand a `CRS` in R and components of a `CRS`
+
+  
+A `CRS` is made up of several components:
+
+- **Coordinate system**: The x,y grid that defines where your data lies in space
+- **Horizontal and vertical units**: The units describing grid along the x,y and possibly z axes
+- **Datum**: The modeled version of the shape of the earth
+- **Projection details**: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)
+
+- There is no 'on-the-fly' projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you'll get an error
+
+- [spatialreference.org](https://spatialreference.org/) is your friend in R - chances are you will use it frequently working with spatial data in R.
+
+- Useful `rgdal` package functions:
+  + projInfo(type='datum')
+  + projInfo(type='ellps')
+  + projInfo(type='proj')
+
+<!--chapter:end:03-crs.Rmd-->
+
+# Vector data with `sf`
+
+```{r, fig.cap="Sticky geometry with `sf`", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/Sticky.png")
+```
+
+- `sf` makes use of a couple key libraries that are the foundation for most open source geospatial software
+```{r, fig.cap="Source: https://www.r-spatial.org/r/2020/03/17/wkt.html ", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/sf_deps.png")
+```
+
+- Talk about the difference between `st_read` and `read_sf`.  `read_sf` uses `tidyverse`-style defaults:
+  * `quiet = TRUE`
+  * `as_tibble` = TRUE
+  * `stringsAsFactors = FALSE`
+
+- Mention units in sf...
+
+You can read many different vector data types (through `gdal`):
+- ESRI Shapefiles
+- Geopackages
+- Geojson
+- ESRI File Geodatabases
+- PostGIS databases
+- ...
+
+We can easily see which drivers and how many are available to `sf` through `gdal`:
+```{r st_drivers}
+library(dplyr)
+library(sf)
+print(paste0('There are ',st_drivers("vector") %>% nrow(), ' vector drivers available using st_read or read_sf'))
+print('They are the following: ')
+print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
+```
+  
+- example with tigris
+```{r plot some states)}
+library(tigris)
+library(dplyr)
+options(tigris_class = 'sf')
+SW_states <- tigris::states() %>% 
+  dplyr::select(NAME %in% c('Texas'))
+```
+
+Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html).
+```{r}
+library(sf)
+library(tidycensus)
+library(tidyverse)
+# census_api_key("YOUR API KEY GOES HERE")
+```
+
+```{r}
+library(tidycensus)
+library(ggplot2)
+options(tigris_use_cache = TRUE)
+austin_tracts <- get_acs(state = 'TX', county = 'Travis', geography = "tract",
+                         variables = "B19013_001", geometry = TRUE)
+
+austin_tracts %>%
+  ggplot(aes(fill = estimate)) + 
+  geom_sf(color = NA) + 
+  coord_sf(crs = 26911) + 
+  scale_fill_viridis_c(option = "magma") 
+```
+
+### Challenge: Chained spatial operation {.challenge}
+
+Earlier we showed example of printing and storing a statement using parens
+```{r}
+(file <- system.file("gpkg/nc.gpkg", package='sf'))
+```
+
+How would we read this file into an `sf` data frame using chained operation?
+
+### Answer {.solution} 
+
+```{r}
+(file %>% read_sf() -> nc)
+```
+
+A question to use on a spatial tibble - What type of object is ''?  If you `run head()` does it behave the way you're used to seeing `head` function?  How might you get the behavior you're used to seeing from `head` with ''
+
+<!--chapter:end:04-vector.Rmd-->
+
+# Raster data
+
+
+<!--chapter:end:05-raster.Rmd-->
+
+# Geoprocessing
+
+
+## Example one
+
+## Example two
+
+<!--chapter:end:06-geoprocessing.Rmd-->
+
+
+# References {-}
+
+Placeholder
+
+
+### R Spatial Resources
+### R Vector Processing / Simple Features Resources
+### R Raster Resources
+### R Mapping Resources
+### General R Resources
+
+<!--chapter:end:07-references.Rmd-->
+

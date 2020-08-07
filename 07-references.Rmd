@@ -12,6 +12,7 @@
 * [**Intro to GIS and Spatial Analysis by Manuel Gimond**](https://mgimond.github.io/Spatial/index.html)
 * [**FOSS4G2019 R for Geospatial Processing**](https://bakaniko.github.io/FOSS4G2019_Geoprocessing_with_R_workshop/)
 * [**An Introduction to Spatial Analysis and Mapping in R**](https://bookdown.org/lexcomber/brunsdoncomber2e/)
+* [Earth Analytics Spatial Data in R](https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/)
 
 ### R Vector Processing / Simple Features Resources
 

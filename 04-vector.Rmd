@@ -1,16 +1,21 @@
-# Vector data with sf
-
-- Some key aspects of sf
+# Vector data with `sf`
 
 ```{r, fig.cap="Sticky geometry with `sf`", echo=FALSE, out.width="150%"}
 knitr::include_graphics("images/Sticky.png")
+```
+
+- `sf` makes use of a couple key libraries that are the foundation for most open source geospatial software
+```{r, fig.cap="Source: https://www.r-spatial.org/r/2020/03/17/wkt.html ", echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/sf_deps.png")
 ```
 
 - Talk about the difference between `st_read` and `read_sf`.  `read_sf` uses `tidyverse`-style defaults:
   * `quiet = TRUE`
   * `as_tibble` = TRUE
   * `stringsAsFactors = FALSE`
-  
+
+- Mention units in sf...
+
 You can read many different vector data types (through `gdal`):
 - ESRI Shapefiles
 - Geopackages
@@ -20,7 +25,9 @@ You can read many different vector data types (through `gdal`):
 - ...
 
 We can easily see which drivers and how many are available to `sf` through `gdal`:
-```{r st_drivers)}
+```{r st_drivers}
+library(dplyr)
+library(sf)
 print(paste0('There are ',st_drivers("vector") %>% nrow(), ' vector drivers available using st_read or read_sf'))
 print('They are the following: ')
 print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
@@ -29,10 +36,12 @@ print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
 - example with tigris
 ```{r plot some states)}
 library(tigris)
+library(dplyr)
 options(tigris_class = 'sf')
 SW_states <- tigris::states() %>% 
-  select(NAME %in% c('))
+  dplyr::select(NAME %in% c('Texas'))
 ```
+
 Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html).
 ```{r}
 library(sf)

@@ -39,6 +39,7 @@ knitr::include_graphics("images/WordCloud.png")
   + `palmerpenguins`
   + `tigris`
   + `tibble`
+  + `rgdal`
   + [awra2020spatial](https://github.com/mhweber/awra2020spatial) - data for this workshop contained in package
   
 - Downloading content via Github
@@ -355,7 +356,6 @@ The [R Spatial Task View page](https://cran.r-project.org/web/views/Spatial.html
 
 ## Quick examples
 Here is just a sampling of few quick spatial tasks.
->>>>>>> 3aeaae3b947da3e86b98a372cdb7eb1342a5cec9
 
 ### Geocoding example with tmaptools using open street map
 Here we'll use the `tmap` package and `tmaptools` to 'geocode' a named feature in OpenStreetMap import it into our R session as an `sf` feature.
@@ -412,4 +412,3 @@ library(mapview)
 mapview(tex_cap, col="red", col.regions = "red") + mapview(counties, alpha.regions = .1)
 ```
 
-We will look in more depth at these and other examples in following sections

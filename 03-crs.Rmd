@@ -1,0 +1,22 @@
+# Coordinate reference systems
+
+- Lesson Objectives
+  
+  + Describe and understand a `CRS` in R and components of a `CRS`
+
+  
+A `CRS` is made up of several components:
+
+- **Coordinate system**: The x,y grid that defines where your data lies in space
+- **Horizontal and vertical units**: The units describing grid along the x,y and possibly z axes
+- **Datum**: The modeled version of the shape of the earth
+- **Projection details**: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)
+
+- There is no 'on-the-fly' projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you'll get an error
+
+- [spatialreference.org](https://spatialreference.org/) is your friend in R - chances are you will use it frequently working with spatial data in R.
+
+- Useful `rgdal` package functions:
+  + projInfo(type='datum')
+  + projInfo(type='ellps')
+  + projInfo(type='proj')
