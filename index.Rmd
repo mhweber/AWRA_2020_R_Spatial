@@ -48,7 +48,7 @@ knitr::include_graphics("images/WordCloud.png")
 - Using RMarkdown and RStudio
 
 
-### Overview 
+## Overview 
 ```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
 knitr::include_graphics("images/History of R.png")
 ```
