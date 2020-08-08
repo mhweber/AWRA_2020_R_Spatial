@@ -55,19 +55,6 @@ austin_tracts %>%
   scale_fill_viridis_c(option = "magma") 
 ```
 
-### Challenge: Chained spatial operation {.challenge}
 
-Earlier we showed example of printing and storing a statement using parens
-```{r}
-(file <- system.file("gpkg/nc.gpkg", package='sf'))
-```
-
-How would we read this file into an `sf` data frame using chained operation?
-
-### Answer {.solution} 
-
-```{r}
-(file %>% read_sf() -> nc)
-```
 
 A question to use on a spatial tibble - What type of object is ''?  If you `run head()` does it behave the way you're used to seeing `head` function?  How might you get the behavior you're used to seeing from `head` with ''

@@ -37,6 +37,7 @@ kable(head(st_drivers(what='raster'),n=5))
 - Geojson
 - Spatial database files
 
+### Reading in shapefiles
 Typically working with vector GIS data we work with ESRI shapefiles or geodatabases - here we have an example of how one would read in a shapefie using `sf`:
 ```{r shapefile_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 download.file("ftp://ftp.gis.oregon.gov/adminbound/citylim_2017.zip","citylim_2017.zip")
@@ -54,13 +55,15 @@ plot(citylims$geometry, axes=T, main='Oregon City Limits')
 {.challenge}
 Above, I didn't pass any parameters to st_read - typically I would pass the parameters `quiet=TRUE` and `stringsAsFactors=FALSE` - why would this be a good practice in general?
 
-### Answer {.solution}
+### Answer 
+{.solution}
 `read_sf` is an `sf` alternative to st_read (see [this](https://keen-swartz-3146c4.netlify.com/intro.html#read) section 1.2.2). Try reading in `citylims` data above using `read_sf` and notice difference, and check out `help(read_sf)`.  `read_sf` and `write`sf` are simply aliases for st_read and st_write with modified default arguments.  Big differences are:
 
 - stringsAsFactors=FALSE
 - quiet=TRUE
 - as_tibble=TRUE
 
+### Reading in geodatabases
 We use `st_read` or `read_sf` similarly for reading in an ESRI file geodatabase feature:
 We use `st_read` similarly for reading in an ESRI file geodatabase feature:
 ```{r geodatabase_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
@@ -76,7 +79,8 @@ state_poly <- st_read(dsn=fgdb,layer="state_poly")
 plot(state_poly$SHAPE, axes=TRUE)
 ```
 
-spatial file format is the geopackage. Let's try a quick read and write of geopackage data.  First we'll read in a geopackage using data that comes with `sf` using `dplyr` syntax just to show something a bit different and use `read_sf` as an alternative to `st_read`.  You may want to try writing the data back out as a `geopackage` as well. 
+### Reading in geodatabases
+Another spatial file format is the geopackage. Let's try a quick read and write of geopackage data.  First we'll read in a geopackage using data that comes with `sf` using `dplyr` syntax just to show something a bit different and use `read_sf` as an alternative to `st_read`.  You may want to try writing the data back out as a `geopackage` as well. 
 
 Quick question: What are a couple advantages of `geopackages` over `shapefiles`?
 ```{r geopackage_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
@@ -84,7 +88,8 @@ nc <- system.file("gpkg/nc.gpkg", package="sf") %>% read_sf() # reads in
 head(nc)
 ```
 
-There is a weatlh of open spatial data accessible online now via static URLs or APIs - a few examples include [Data.gov](https://catalog.data.gov/dataset?metadata_type=geospatial), NASA [SECAC Portal](http://sedac.ciesin.columbia.edu/), [Natural Earth](http://www.naturalearthdata.com/), [UNEP GEOdata](http://geodata.grid.unep.ch/), and countless others listed here at [Free GIS Data](https://freegisdata.rtwilson.com/).
+### Open spatial data sources
+There is a wealth of open spatial data accessible online now via static URLs or APIs - a few examples include [Data.gov](https://catalog.data.gov/dataset?metadata_type=geospatial), NASA [SECAC Portal](http://sedac.ciesin.columbia.edu/), [Natural Earth](http://www.naturalearthdata.com/), [UNEP GEOdata](http://geodata.grid.unep.ch/), and countless others listed here at [Free GIS Data](https://freegisdata.rtwilson.com/).
 
 From static URLs, we can simply use `download.file()` as in this example from [Geocomputation with R](https://geocompr.robinlovelace.net/read-write.html) using data from the [National Park data catalog](https://catalog.data.gov/dataset/national-parks):
 ```{r, eval=FALSE}
@@ -98,6 +103,7 @@ plot(ca_parks$geometry, axes=T, main = 'National Parks in CA', col='green')
 plot(US[US$NAME_1=='California',], add=T)
 ```
 
+### Spatial data from R packages
 There are also a number of R packages written specifically to provide access to geospatial data - below are a few and we'll step through some examples of pulling in data using some of these packages.
 ```{r datapackages, echo=FALSE}
 datapackages = tibble::tribble(
@@ -129,6 +135,7 @@ states_sf %>%
   ggplot + geom_sf()
 ```
 
+### Read in raster data
 Here we use the `getData` function in the `raster` package to download elevation into a `RasterLayer` and grab administrative boundaries from a database of global administrative boundaries - warning: sometimes `getData` function has trouble accessing the server and download can be a bit slow. Here we see as well how we can use vector spataio polygon data to crop raster data.
 ```{r rasterdata, message=FALSE, warning=FALSE, error=FALSE}
 library(raster)
@@ -142,31 +149,37 @@ plot(elev, add=TRUE)
 plot(Benton, add=TRUE)
 ```
 
+### Read in OpenStreetMap data
 The [osmdata](https://github.com/ropensci/osmdata) package is a fantastic resource for leveraging the OpenStreetMap (OSM) database.
 ```{r osmdata , message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 library(osmdata)
 library(mapview)
 
-restaurants <- opq ("portsmouth usa") %>%
-    add_osm_feature(key = "amenity", value = "restaurant") %>%
-    osmdata_sf()
-
-path <- path$osm_lines
-footway = opq(bbox = "corvallis oregon") %>% 
+footway <- opq(bbox = "corvallis oregon") %>% 
   add_osm_feature(key = "highway", value = "footway") %>% 
   osmdata_sf()
 footway <- footway$osm_lines
-trails <- rbind(path[,c(1,37)], footway[,c(1,59)])
-mapview(trails$geometry)
+mapview(footway$geometry)
 ```
 
 
-We often have flat files, locally on our machine or acceessed elsewhere, that have coordinate inforamtion which we would like to make spatial:
-```{r vector_drivers, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
+```{r osmdata2 , message=FALSE, warning=FALSE, error=FALSE}
+library(osmdata)
+library(mapview)
+rstrnts <- opq(bbox = "corvallis oregon") %>% 
+    add_osm_feature(key = "amenity", value = "restaurant") %>%
+    osmdata_sf()
+rstrnts <- rstrnts$osm_points
+
+mapview(rstrnts$geometry)
+```
+
+We often have flat files, locally on our machine or accessed elsewhere, that have coordinate information which we would like to make spatial:
+```{r vector_drivers, message=FALSE, warning=FALSE, error=FALSE}
 library(devtools)
 library(readr)
 library(ggplot2)
-install_github("mhweber/awra2020spatial", force=TRUE)
+# install_github("mhweber/awra2020spatial", force=TRUE)
 library(awra2020spatial)
 gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "awra2020spatial"))
 
