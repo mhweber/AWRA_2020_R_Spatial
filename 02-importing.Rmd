@@ -37,8 +37,8 @@ kable(head(st_drivers(what='raster'),n=5))
 - Geojson
 - Spatial database files
 
-### Reading in shapefiles
-Typically working with vector GIS data we work with ESRI shapefiles or geodatabases - here we have an example of how one would read in a shapefie using `sf`:
+### Shapefiles
+Typically working with vector GIS data we work with ESRI shapefiles or geodatabases - here we have an example of how one would read in a shapefile using `sf`:
 ```{r shapefile_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 download.file("ftp://ftp.gis.oregon.gov/adminbound/citylim_2017.zip","citylim_2017.zip")
 unzip("citylim_2017.zip", exdir = ".") 
@@ -63,45 +63,34 @@ Above, I didn't pass any parameters to st_read - typically I would pass the para
 - quiet=TRUE
 - as_tibble=TRUE
 
-### Reading in geodatabases
+### Geodatabases
 We use `st_read` or `read_sf` similarly for reading in an ESRI file geodatabase feature:
-We use `st_read` similarly for reading in an ESRI file geodatabase feature:
-```{r geodatabase_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
-download.file("https://www.blm.gov/or/gis/files/web_corp/state_county_boundary.zip","state_county_boundary.zip")
-unzip("state_county_boundary.zip", exdir = ".")
-fgdb = "state_county_boundary.gdb"
+```{r geodatabase_read, message=FALSE, warning=FALSE, error=FALSE}
+# download.file("ftp://ftp.gis.oregon.gov/adminbound/OregonStateParks_20181010.zip", "OregonStateParks.zip")
+# unzip("OregonStateParks.zip", exdir = ".")
+library(ggplot2)
+fgdb = "OregonStateParks_20181010.gdb"
 
 # List all feature classes in a file geodatabase
 st_layers(fgdb)
 
 # Read the feature class
-state_poly <- st_read(dsn=fgdb,layer="state_poly")
-plot(state_poly$SHAPE, axes=TRUE)
+parks <- st_read(dsn=fgdb,layer="LO_PARKS")
+ggplot(parks) + geom_sf()
 ```
 
-### Reading in geodatabases
+### Geopackages
 Another spatial file format is the geopackage. Let's try a quick read and write of geopackage data.  First we'll read in a geopackage using data that comes with `sf` using `dplyr` syntax just to show something a bit different and use `read_sf` as an alternative to `st_read`.  You may want to try writing the data back out as a `geopackage` as well. 
 
 Quick question: What are a couple advantages of `geopackages` over `shapefiles`?
-```{r geopackage_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
+```{r geopackage_read, message=FALSE, warning=FALSE, error=FALSE}
+library(dplyr)
 nc <- system.file("gpkg/nc.gpkg", package="sf") %>% read_sf() # reads in
-head(nc)
+glimpse(nc)
 ```
 
 ### Open spatial data sources
-There is a wealth of open spatial data accessible online now via static URLs or APIs - a few examples include [Data.gov](https://catalog.data.gov/dataset?metadata_type=geospatial), NASA [SECAC Portal](http://sedac.ciesin.columbia.edu/), [Natural Earth](http://www.naturalearthdata.com/), [UNEP GEOdata](http://geodata.grid.unep.ch/), and countless others listed here at [Free GIS Data](https://freegisdata.rtwilson.com/).
-
-From static URLs, we can simply use `download.file()` as in this example from [Geocomputation with R](https://geocompr.robinlovelace.net/read-write.html) using data from the [National Park data catalog](https://catalog.data.gov/dataset/national-parks):
-```{r, eval=FALSE}
-# download.file(url = "http://nrdata.nps.gov/programs/lands/nps_boundary.zip",
-#               destfile = "nps_boundary.zip")
-# unzip(zipfile = "nps_boundary.zip")
-f = "data/nps_boundary.shp"
-usa_parks <- st_read(dsn = f)
-ca_parks <- subset(usa_parks, STATE =='CA')
-plot(ca_parks$geometry, axes=T, main = 'National Parks in CA', col='green')
-plot(US[US$NAME_1=='California',], add=T)
-```
+There is a wealth of open spatial data accessible online now via static URLs or APIs - a few examples include [Data.gov](https://catalog.data.gov/dataset?metadata_type=geospatial), NASA [SECAC Portal](http://sedac.ciesin.columbia.edu/), [Natural Earth](http://www.naturalearthdata.com/), [UNEP GEOdata](http://geodata.grid.unep.ch/), and countless others listed here at [Free GIS Data](https://freegisdata.rtwilson.com/)
 
 ### Spatial data from R packages
 There are also a number of R packages written specifically to provide access to geospatial data - below are a few and we'll step through some examples of pulling in data using some of these packages.
@@ -123,7 +112,7 @@ datapackages = tibble::tribble(
 knitr::kable(datapackages, caption = "Example R packages for spatial data retrieval.")
 ```
 
-Below is an example of pulling in US states using the `rnaturalearth` package - note that the default is to pull in data as `sp` objects and we coerce to `sf`.  Also take a look at the chained operation using dplyr and see if this makes sense to you - we'll explore more in following section.  Try changing the filter or a parameter in ggplot.
+Below is an example of pulling in US states using the `rnaturalearth` package - note that the default is to pull in data as `sp` objects and we coerce to `sf`.  Also take a look at the chained operation using dplyr.  Try changing the filter or a parameter in ggplot.
 ```{r naturalearth, , message=FALSE, warning=FALSE, error=FALSE}
 library(rnaturalearth)
 library(dplyr)
@@ -151,7 +140,7 @@ plot(Benton, add=TRUE)
 
 ### Read in OpenStreetMap data
 The [osmdata](https://github.com/ropensci/osmdata) package is a fantastic resource for leveraging the OpenStreetMap (OSM) database.
-```{r osmdata , message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
+```{r osmdata , message=FALSE, warning=FALSE, error=FALSE}
 library(osmdata)
 library(mapview)
 
