@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2020-08-07" />
+<meta name="date" content="2020-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,70 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="css\style.css" type="text/css" />
 <link rel="stylesheet" href="css\lesson.css" type="text/css" />
@@ -73,32 +137,44 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.3</b> R Basics Review</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.4.1</b> Challenge</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.2</b> Answer</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.4.3</b> R Spatial Package Landscape</a></li>
+<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.4.4</b> How did we make this figure?</a></li>
+<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.4.5</b> Answer</a></li>
+<li class="chapter" data-level="1.4.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.4.6</b> Primary R spatial packages</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.2</b> R Basics Review</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.3</b> Spatial Data in R</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.3.1</b> Challenge</a></li>
-<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.3.2</b> Answer</a></li>
-<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.3.3</b> R Spatial Package Landscape</a></li>
-<li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.3.4</b> How did we make this figure?</a></li>
-<li class="chapter" data-level="1.3.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.3.5</b> Answer</a></li>
-<li class="chapter" data-level="1.3.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.3.6</b> Primary R spatial packages</a></li>
-</ul></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.4</b> Quick examples</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.4.1</b> Geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.4.2</b> Run and examine code chunk above</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.4.3</b> Answer</a></li>
-<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.4.4</b> Choropleth map</a></li>
-<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.4.5</b> Interactive mapping</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.5.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.5.2</b> Run and examine code chunk above</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.5.3</b> Answer</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.5.4</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.5.5</b> Interactive mapping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a></li>
-<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a></li>
-<li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a><ul>
-<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#challenge-chained-spatial-operation"><i class="fa fa-check"></i><b>4.0.1</b> Challenge: Chained spatial operation</a></li>
-<li class="chapter" data-level="4.0.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>4.0.2</b> Answer</a></li>
+<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Reading in shapefiles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> st_read versus read_sf</a></li>
+<li class="chapter" data-level="2.1.3" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Reading in geodatabases</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-geodatabases-1"><i class="fa fa-check"></i><b>2.1.5</b> Reading in geodatabases</a></li>
+<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
+<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.7</b> Spatial data from R packages</a></li>
+<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in raster data</a></li>
+<li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.9</b> Read in OpenStreetMap data</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a><ul>
+<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a></li>
 <li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
 <li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
@@ -133,19 +209,36 @@
             <section class="normal" id="section-">
 <div id="coordinate-reference-systems" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Coordinate reference systems</h1>
-<ul>
-<li><p>Lesson Objectives</p>
-<ul>
-<li>Describe and understand a <code>CRS</code> in R and components of a <code>CRS</code></li>
-</ul></li>
-</ul>
+<div id="lesson-objectives" class="section level2">
+<h2><span class="header-section-number">3.1</span> Lesson Objectives</h2>
+<p>Describe and understand a <code>CRS</code> in R and components of a <code>CRS</code></p>
 <p>A <code>CRS</code> is made up of several components:</p>
 <ul>
-<li><p><strong>Coordinate system</strong>: The x,y grid that defines where your data lies in space</p></li>
-<li><p><strong>Horizontal and vertical units</strong>: The units describing grid along the x,y and possibly z axes</p></li>
-<li><p><strong>Datum</strong>: The modeled version of the shape of the earth</p></li>
-<li><p><strong>Projection details</strong>: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)</p></li>
-<li><p>There is no ‘on-the-fly’ projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you’ll get an error</p></li>
+<li><strong>Coordinate system</strong>: The x,y grid that defines where your data lies in space</li>
+<li><strong>Horizontal and vertical units</strong>: The units describing grid along the x,y and possibly z axes</li>
+<li><strong>Datum</strong>: The modeled version of the shape of the earth</li>
+<li><strong>Projection details</strong>: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)</li>
+</ul>
+<div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Why you need to know about CRS working with spatial data in R:</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="coordinate-reference-systems.html#cb1-1"></a><span class="kw">library</span>(awra2020spatial)</span>
+<span id="cb1-2"><a href="coordinate-reference-systems.html#cb1-2"></a><span class="kw">library</span>(readr)</span>
+<span id="cb1-3"><a href="coordinate-reference-systems.html#cb1-3"></a><span class="kw">library</span>(sf)</span>
+<span id="cb1-4"><a href="coordinate-reference-systems.html#cb1-4"></a><span class="kw">data</span>(pnw)</span>
+<span id="cb1-5"><a href="coordinate-reference-systems.html#cb1-5"></a></span>
+<span id="cb1-6"><a href="coordinate-reference-systems.html#cb1-6"></a>gages =<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata/Gages_flowdata.csv&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;awra2020spatial&quot;</span>))</span>
+<span id="cb1-7"><a href="coordinate-reference-systems.html#cb1-7"></a></span>
+<span id="cb1-8"><a href="coordinate-reference-systems.html#cb1-8"></a>gages_sf &lt;-<span class="st"> </span>gages <span class="op">%&gt;%</span></span>
+<span id="cb1-9"><a href="coordinate-reference-systems.html#cb1-9"></a><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;LON_SITE&quot;</span>, <span class="st">&quot;LAT_SITE&quot;</span>), <span class="dt">crs =</span> <span class="dv">4269</span>, <span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb1-10"><a href="coordinate-reference-systems.html#cb1-10"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(STATION_NM,LON_SITE, LAT_SITE)</span>
+<span id="cb1-11"><a href="coordinate-reference-systems.html#cb1-11"></a></span>
+<span id="cb1-12"><a href="coordinate-reference-systems.html#cb1-12"></a><span class="co"># Awesome, let&#39;s plot our gage data and state boundaries!</span></span>
+<span id="cb1-13"><a href="coordinate-reference-systems.html#cb1-13"></a><span class="kw">plot</span>(pnw<span class="op">$</span>geometry, <span class="dt">axes=</span><span class="ot">TRUE</span>)</span>
+<span id="cb1-14"><a href="coordinate-reference-systems.html#cb1-14"></a><span class="kw">plot</span>(gages_sf<span class="op">$</span>geometry, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">add=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/crs_fail-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="coordinate-reference-systems.html#cb2-1"></a><span class="co"># um, what?</span></span></code></pre></div>
+<p>There is no ‘on-the-fly’ projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you’ll get an error</p>
+<ul>
 <li><p><a href="https://spatialreference.org/">spatialreference.org</a> is your friend in R - chances are you will use it frequently working with spatial data in R.</p></li>
 <li><p>Useful <code>rgdal</code> package functions:</p>
 <ul>
@@ -155,6 +248,8 @@
 </ul></li>
 </ul>
 
+</div>
+</div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

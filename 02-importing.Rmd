@@ -183,11 +183,11 @@ library(ggplot2)
 library(awra2020spatial)
 gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "awra2020spatial"))
 
-sites_sf <- gages %>%
+gages_sf <- gages %>%
   st_as_sf(coords = c("LON_SITE", "LAT_SITE"), crs = 4269, remove = FALSE) %>%
   dplyr::select(STATION_NM,LON_SITE, LAT_SITE)
 
-ggplot() + geom_sf(data=sites_sf)
+ggplot() + geom_sf(data=gages_sf)
 ```
 
 

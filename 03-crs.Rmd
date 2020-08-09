@@ -1,10 +1,8 @@
 # Coordinate reference systems
 
-- Lesson Objectives
-  
-  + Describe and understand a `CRS` in R and components of a `CRS`
+## Lesson Objectives
+Describe and understand a `CRS` in R and components of a `CRS`
 
-  
 A `CRS` is made up of several components:
 
 - **Coordinate system**: The x,y grid that defines where your data lies in space
@@ -12,7 +10,25 @@ A `CRS` is made up of several components:
 - **Datum**: The modeled version of the shape of the earth
 - **Projection details**: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)
 
-- There is no 'on-the-fly' projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you'll get an error
+### Why you need to know about CRS working with spatial data in R:
+```{r crs_fail, message=FALSE, warning=FALSE, error=FALSE}
+library(awra2020spatial)
+library(readr)
+library(sf)
+data(pnw)
+
+gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "awra2020spatial"))
+
+gages_sf <- gages %>%
+  st_as_sf(coords = c("LON_SITE", "LAT_SITE"), crs = 4269, remove = FALSE) %>%
+  dplyr::select(STATION_NM,LON_SITE, LAT_SITE)
+
+# Awesome, let's plot our gage data and state boundaries!
+plot(pnw$geometry, axes=TRUE)
+plot(gages_sf$geometry, col='red', add=TRUE)
+# um, what?
+```
+There is no 'on-the-fly' projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you'll get an error
 
 - [spatialreference.org](https://spatialreference.org/) is your friend in R - chances are you will use it frequently working with spatial data in R.
 
