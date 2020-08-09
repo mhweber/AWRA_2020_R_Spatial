@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2020-08-08" />
+<meta name="date" content="2020-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,11 +158,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a><ul>
 <li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Reading in shapefiles</a></li>
+<li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
 <li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> st_read versus read_sf</a></li>
 <li class="chapter" data-level="2.1.3" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
-<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Reading in geodatabases</a></li>
-<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-geodatabases-1"><i class="fa fa-check"></i><b>2.1.5</b> Reading in geodatabases</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Geodatabases</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.5</b> Geopackages</a></li>
 <li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
 <li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.7</b> Spatial data from R packages</a></li>
 <li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in raster data</a></li>
@@ -172,6 +172,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a><ul>
 <li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
+<li class="chapter" data-level="3.1.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.1.2</b> Changes to CRS recently in R in <code>sf</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.1.3</b> Projected coordinate systems</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a></li>
@@ -219,6 +221,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Datum</strong>: The modeled version of the shape of the earth</li>
 <li><strong>Projection details</strong>: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)</li>
 </ul>
+<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<img src="images/Ellipsoid.png" alt="Source: https://mgimond.github.io/Spatial/coordinate-systems.html" width="75%" />
+<p class="caption">
+Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-systems.html" class="uri">https://mgimond.github.io/Spatial/coordinate-systems.html</a>
+</p>
+</div>
+<p>The earth is a sphere, but more precisely, an <em>ellipsoid</em>, which is defined by two radii:
+- semi-major axis (equatorial radius)
+- semi-minor axis (polar radius)</p>
+<p>We know with precision that the measure of these two are 6,378,137 meters and 6,356,752 meters respectively.</p>
+<p>More precisely that an <em>ellipsoid</em>, though, we know that earth is a <em>geoid</em> - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a <em>datum</em> comes in - we match the geoid to the ellipsoid to best match local conditions. We have many datums to choose from based on location of interest - in the US we would typically choose <em>NAD83</em></p>
 <div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Why you need to know about CRS working with spatial data in R:</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="coordinate-reference-systems.html#cb1-1"></a><span class="kw">library</span>(awra2020spatial)</span>
@@ -247,6 +260,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>projInfo(type=‘proj’)</li>
 </ul></li>
 </ul>
+</div>
+<div id="changes-to-crs-recently-in-r-in-sf" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Changes to CRS recently in R in <code>sf</code></h3>
+<p>It’s important to <a href="https://www.r-spatial.org/r/2020/03/17/wkt.html#crs-objects-in-sf">understand recent changes</a> in handling of <code>crs</code> in <code>sf</code>
+Prior to <code>sf</code> 0.9, <code>crs</code> were represented as lists with two components:
+- <code>epsg</code> (European Petroleum Survey Group ) code, which could be NA
+- <code>proj4string</code> - a projection string</p>
+<pre><code>library(sf) 
+# Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
+st_crs(4326)
+# Coordinate Reference System:
+#   EPSG: 4326
+#   proj4string: &quot;+proj=longlat +datum=WGS84 +no_defs&quot;</code></pre>
+<p>Now, however, <code>sf</code> represents <code>crs</code> as lists with two different components:
+- <code>input</code>
+- <code>wkt</code></p>
+<pre><code>library(sf)
+
+## Linking to GEOS 3.8.0, GDAL 3.0.2, PROJ 6.2.1
+
+(x = st_crs(4326))
+
+## Coordinate Reference System:
+##   User input: EPSG:4326 
+##   wkt:
+## GEOGCRS[&quot;WGS 84&quot;,
+##     DATUM[&quot;World Geodetic System 1984&quot;,
+##         ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+##             LENGTHUNIT[&quot;metre&quot;,1]]],
+##     PRIMEM[&quot;Greenwich&quot;,0,
+##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,
+##             ORDER[1],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,
+##             ORDER[2],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;World&quot;],
+##         BBOX[-90,-180,90,180]],
+##     ID[&quot;EPSG&quot;,4326]]</code></pre>
+<p>You can still get the <code>proj4string</code> or <code>epsg</code> value by:</p>
+<pre><code>x$epsg
+
+## [1] 4326
+
+x$proj4string
+
+## [1] &quot;+proj=longlat +datum=WGS84 +no_defs&quot;</code></pre>
+</div>
+<div id="projected-coordinate-systems" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Projected coordinate systems</h3>
+<p>Typically we want to work with data that is projected. Projected coordinate systems (which are based on Cartesian coordinates) have: an origin, an x axis, a y axis, and a linear unit of measure. Going from geographic coordinates to a projected coordinate reference systems requires mathematical transformations.</p>
+<p>Four spatial properties of projected coordinate systems that are subject to distortion are: <em>shape</em>, <em>area</em>, <em>distance</em> and <em>direction</em>. A map that preserves shape is called <em>conformal</em>; one that preserves area is called <em>equal-area</em>; one that preserves distance is called <em>equidistant</em>; and one that preserves direction is called <em>azimuthal</em> (from <a href="https://mgimond.github.io/Spatial/coordinate-systems.html">https://mgimond.github.io/Spatial/coordinate-systems.html</a>.</p>
+<p>The takeaway from all this is you need to be aware of the <code>crs</code> for your objects in R, make sure they are projected if appropriate and in a projection that optimizes properties you are interested in, and objects you are analyzing or mapping together need to be in same <code>crs</code>.</p>
+<p>Going back to our original example, we can transform <code>crs</code> of objects to work with them together:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="coordinate-reference-systems.html#cb6-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="coordinate-reference-systems.html#cb6-2"></a><span class="co"># Check our coordinate reference systems</span></span>
+<span id="cb6-3"><a href="coordinate-reference-systems.html#cb6-3"></a><span class="kw">st_crs</span>(gages_sf)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: EPSG:4269 
+##   wkt:
+## GEOGCRS[&quot;NAD83&quot;,
+##     DATUM[&quot;North American Datum 1983&quot;,
+##         ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
+##             LENGTHUNIT[&quot;metre&quot;,1]]],
+##     PRIMEM[&quot;Greenwich&quot;,0,
+##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,
+##             ORDER[1],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,
+##             ORDER[2],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;North America - NAD83&quot;],
+##         BBOX[14.92,167.65,86.46,-47.74]],
+##     ID[&quot;EPSG&quot;,4269]]</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="coordinate-reference-systems.html#cb8-1"></a><span class="kw">st_crs</span>(pnw)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: +proj=aea +lat_1=41 +lat_2=47 +lat_0=44 +lon_0=-120 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs 
+##   wkt:
+## PROJCRS[&quot;unknown&quot;,
+##     BASEGEOGCRS[&quot;unknown&quot;,
+##         DATUM[&quot;North American Datum 1983&quot;,
+##             ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
+##                 LENGTHUNIT[&quot;metre&quot;,1]],
+##             ID[&quot;EPSG&quot;,6269]],
+##         PRIMEM[&quot;Greenwich&quot;,0,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8901]]],
+##     CONVERSION[&quot;unknown&quot;,
+##         METHOD[&quot;Albers Equal Area&quot;,
+##             ID[&quot;EPSG&quot;,9822]],
+##         PARAMETER[&quot;Latitude of false origin&quot;,44,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8821]],
+##         PARAMETER[&quot;Longitude of false origin&quot;,-120,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8822]],
+##         PARAMETER[&quot;Latitude of 1st standard parallel&quot;,41,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8823]],
+##         PARAMETER[&quot;Latitude of 2nd standard parallel&quot;,47,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8824]],
+##         PARAMETER[&quot;Easting at false origin&quot;,0,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8826]],
+##         PARAMETER[&quot;Northing at false origin&quot;,0,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8827]]],
+##     CS[Cartesian,2],
+##         AXIS[&quot;(E)&quot;,east,
+##             ORDER[1],
+##             LENGTHUNIT[&quot;metre&quot;,1,
+##                 ID[&quot;EPSG&quot;,9001]]],
+##         AXIS[&quot;(N)&quot;,north,
+##             ORDER[2],
+##             LENGTHUNIT[&quot;metre&quot;,1,
+##                 ID[&quot;EPSG&quot;,9001]]]]</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="coordinate-reference-systems.html#cb10-1"></a><span class="co"># Are they equal?</span></span>
+<span id="cb10-2"><a href="coordinate-reference-systems.html#cb10-2"></a><span class="kw">st_crs</span>(gages_sf)<span class="op">==</span><span class="kw">st_crs</span>(pnw)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="coordinate-reference-systems.html#cb12-1"></a><span class="co"># transform one to the other</span></span>
+<span id="cb12-2"><a href="coordinate-reference-systems.html#cb12-2"></a>gages_sf &lt;-<span class="st"> </span><span class="kw">st_transform</span>(gages_sf, <span class="kw">st_crs</span>(pnw))</span>
+<span id="cb12-3"><a href="coordinate-reference-systems.html#cb12-3"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb12-4"><a href="coordinate-reference-systems.html#cb12-4"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>gages_sf,  <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb12-5"><a href="coordinate-reference-systems.html#cb12-5"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>pnw,  <span class="dt">color=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="ot">NA</span>) <span class="op">+</span></span>
+<span id="cb12-6"><a href="coordinate-reference-systems.html#cb12-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;USGS Stream Gages in the Pacific Northwest&quot;</span>) <span class="op">+</span></span>
+<span id="cb12-7"><a href="coordinate-reference-systems.html#cb12-7"></a><span class="st">  </span><span class="kw">theme_bw</span>() </span></code></pre></div>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/crs_fix-1.png" width="672" /></p>
 
 </div>
 </div>
