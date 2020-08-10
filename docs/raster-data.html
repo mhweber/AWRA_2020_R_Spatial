@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Raster data | Fundamentals of Spatial Analysis in R</title>
+  <title>Chapter 5 Raster data | Fundamentals of Spatial Analysis in R</title>
   <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Raster data | Fundamentals of Spatial Analysis in R" />
+  <meta property="og:title" content="Chapter 5 Raster data | Fundamentals of Spatial Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Raster data | Fundamentals of Spatial Analysis in R" />
+  <meta name="twitter:title" content="Chapter 5 Raster data | Fundamentals of Spatial Analysis in R" />
   
   <meta name="twitter:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2020-08-04" />
+<meta name="date" content="2020-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,21 +51,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/PopupTable-0.0.1/popup.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -152,42 +137,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.3</b> R Basics Review</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.4.1</b> Challenge</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.2</b> Answer</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.4.3</b> R Spatial Package Landscape</a></li>
+<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.4.4</b> How did we make this figure?</a></li>
+<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.4.5</b> Answer</a></li>
+<li class="chapter" data-level="1.4.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.4.6</b> Primary R spatial packages</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.2</b> R Basics Review</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.3</b> Spatial Data in R</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.3.1</b> Challenge</a></li>
-<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.3.2</b> Answer</a></li>
-<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.3.3</b> R Spatial Package Landscape</a></li>
-<li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.3.4</b> How did we make this figure?</a></li>
-<li class="chapter" data-level="1.3.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.3.5</b> Answer</a></li>
-<li class="chapter" data-level="1.3.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.3.6</b> Primary R spatial packages</a></li>
-</ul></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.4</b> Quick examples</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.4.1</b> Geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.4.2</b> Run and examine code chunk above</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.4.3</b> Answer</a></li>
-<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.4.4</b> Interactive mapping</a></li>
-<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.4.5</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.5.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.5.2</b> Run and examine code chunk above</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.5.3</b> Answer</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.5.4</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.5.5</b> Interactive mapping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="a-little-about-coordinate-reference-systems.html"><a href="a-little-about-coordinate-reference-systems.html"><i class="fa fa-check"></i><b>2</b> A little about coordinate reference systems</a></li>
-<li class="chapter" data-level="3" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>3</b> Vector data with sf</a><ul>
-<li class="chapter" data-level="3.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#challenge-chained-spatial-operation"><i class="fa fa-check"></i><b>3.0.1</b> Challenge: Chained spatial operation</a></li>
-<li class="chapter" data-level="3.0.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>3.0.2</b> Answer</a></li>
+<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> st_read versus read_sf</a></li>
+<li class="chapter" data-level="2.1.3" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Geodatabases</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.5</b> Geopackages</a></li>
+<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
+<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.7</b> Spatial data from R packages</a></li>
+<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in raster data</a></li>
+<li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.9</b> Read in OpenStreetMap data</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>4</b> Raster data</a></li>
-<li class="chapter" data-level="5" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>5</b> Geoprocessing</a><ul>
-<li class="chapter" data-level="5.1" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a><ul>
+<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
+<li class="chapter" data-level="3.1.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.1.2</b> Changes to CRS recently in R in <code>sf</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.1.3</b> Projected coordinate systems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a><ul>
+<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.0.1</b> Units in <code>sf</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="raster-data.html"><a href="raster-data.html#exploring-raster-objects"><i class="fa fa-check"></i><b>5.0.1</b> Exploring raster objects</a></li>
+<li class="chapter" data-level="5.0.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>5.0.2</b> Answer</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
+<li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#lesson-goals"><i class="fa fa-check"></i><b>6.1</b> Lesson Goals</a></li>
+<li class="chapter" data-level="6.2" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>6.2</b> Example one</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-subsetting"><i class="fa fa-check"></i><b>6.2.1</b> Spatial Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>6.3</b> Example two</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-join"><i class="fa fa-check"></i><b>6.3.1</b> Spatial Join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="geoprocessing.html"><a href="geoprocessing.html#example-three"><i class="fa fa-check"></i><b>6.4</b> Example Three</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="geoprocessing.html"><a href="geoprocessing.html#dissolve"><i class="fa fa-check"></i><b>6.4.1</b> Dissolve</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="geoprocessing.html"><a href="geoprocessing.html#lesson-goals"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.1.1</b> Chorpleths with tmap</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.1.2</b> Leaflet</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.1.3</b> mapview</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>5.2.1</b> R Spatial Resources</a></li>
-<li class="chapter" data-level="5.2.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>5.2.2</b> R Vector Processing / Simple Features Resources</a></li>
-<li class="chapter" data-level="5.2.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>5.2.3</b> R Raster Resources</a></li>
-<li class="chapter" data-level="5.2.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>5.2.4</b> R Mapping Resources</a></li>
-<li class="chapter" data-level="5.2.5" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>5.2.5</b> General R Resources</a></li>
+<li class="chapter" data-level="7.1.4" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.1.4</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="7.1.5" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.1.5</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="7.1.6" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.1.6</b> R Raster Resources</a></li>
+<li class="chapter" data-level="7.1.7" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.1.7</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="7.1.8" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.1.8</b> General R Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/mhweber/AWRA_2020_R_Spatial" target="blank">Published with bookdown</a></li>
@@ -210,8 +230,191 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="raster-data" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Raster data</h1>
+<h1><span class="header-section-number">Chapter 5</span> Raster data</h1>
+<p>Support for gridded data in R in recent year has been best implemented with the <code>raster</code> package by Robert Hijmans. The <code>raster</code> package allows you to:</p>
+<ul>
+<li>read and write almost any commonly used raster data format using <code>rgdal</code></li>
+<li>perform typical raster processing operations such as resampling, projecting, filtering, raster math, etc.</li>
+<li>work with files on disk that are too big to read into memory in R</li>
+<li>run operations quickly since the package relies on back-end C code</li>
+</ul>
+<p>The <a href="https://cran.r-project.org/web/packages/raster/">home page</a> for the <code>raster</code> package has links to several well-written vignettes and documentation for the package.</p>
+<p>The <code>raster</code> package uses three classes / types of objects to represent raster data - <code>RasterLayer</code>, <code>RasterStack</code>, and <code>RasterBrick</code> - these are all <code>S4</code> new style classes in R, just like <code>sp</code> classes.</p>
+<p>There are new developments in raster world in R worth noting - a new package called <a href="https://r-spatial.github.io/stars/index.html">stars</a> (spatiotemporal tidy arrays with R) has been developed through an R-Consortium funded project to handle rasters in a way that is both <code>sf</code> and pipe-based workflow friendly.</p>
+<p>Additionally, Robert Hijmans has a new in development package called <a href="https://github.com/rspatial/terra">terra</a> as a replacement package for <code>raster</code>.</p>
+<p>To familiarize ourselves with the <code>raster</code> package, let’s create an empty <code>RasterLayer</code> object - in order to do this we have to:
+* define the matrix (rows and columns)
+* define the spatial bounding box
+* provide values to the cells</p>
+<p>Note that typically we would be reading raster data in from a file rather than creating a raster from scratch. Run through code steps below to familiarize yourself with contsructing a <code>RasterLayer</code> from scratch.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="raster-data.html#cb1-1"></a><span class="kw">library</span>(raster)</span>
+<span id="cb1-2"><a href="raster-data.html#cb1-2"></a>r &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">10</span>, <span class="dt">nrow =</span> <span class="dv">10</span>, <span class="dt">xmx=</span><span class="op">-</span><span class="dv">116</span>,<span class="dt">xmn=</span><span class="op">-</span><span class="dv">126</span>,<span class="dt">ymn=</span><span class="dv">42</span>,<span class="dt">ymx=</span><span class="dv">46</span>)</span>
+<span id="cb1-3"><a href="raster-data.html#cb1-3"></a><span class="kw">str</span>(r)</span></code></pre></div>
+<pre><code>## Formal class &#39;RasterLayer&#39; [package &quot;raster&quot;] with 12 slots
+##   ..@ file    :Formal class &#39;.RasterFile&#39; [package &quot;raster&quot;] with 13 slots
+##   .. .. ..@ name        : chr &quot;&quot;
+##   .. .. ..@ datanotation: chr &quot;FLT4S&quot;
+##   .. .. ..@ byteorder   : chr &quot;little&quot;
+##   .. .. ..@ nodatavalue : num -Inf
+##   .. .. ..@ NAchanged   : logi FALSE
+##   .. .. ..@ nbands      : int 1
+##   .. .. ..@ bandorder   : chr &quot;BIL&quot;
+##   .. .. ..@ offset      : int 0
+##   .. .. ..@ toptobottom : logi TRUE
+##   .. .. ..@ blockrows   : int 0
+##   .. .. ..@ blockcols   : int 0
+##   .. .. ..@ driver      : chr &quot;&quot;
+##   .. .. ..@ open        : logi FALSE
+##   ..@ data    :Formal class &#39;.SingleLayerData&#39; [package &quot;raster&quot;] with 13 slots
+##   .. .. ..@ values    : logi(0) 
+##   .. .. ..@ offset    : num 0
+##   .. .. ..@ gain      : num 1
+##   .. .. ..@ inmemory  : logi FALSE
+##   .. .. ..@ fromdisk  : logi FALSE
+##   .. .. ..@ isfactor  : logi FALSE
+##   .. .. ..@ attributes: list()
+##   .. .. ..@ haveminmax: logi FALSE
+##   .. .. ..@ min       : num Inf
+##   .. .. ..@ max       : num -Inf
+##   .. .. ..@ band      : int 1
+##   .. .. ..@ unit      : chr &quot;&quot;
+##   .. .. ..@ names     : chr &quot;&quot;
+##   ..@ legend  :Formal class &#39;.RasterLegend&#39; [package &quot;raster&quot;] with 5 slots
+##   .. .. ..@ type      : chr(0) 
+##   .. .. ..@ values    : logi(0) 
+##   .. .. ..@ color     : logi(0) 
+##   .. .. ..@ names     : logi(0) 
+##   .. .. ..@ colortable: logi(0) 
+##   ..@ title   : chr(0) 
+##   ..@ extent  :Formal class &#39;Extent&#39; [package &quot;raster&quot;] with 4 slots
+##   .. .. ..@ xmin: num -126
+##   .. .. ..@ xmax: num -116
+##   .. .. ..@ ymin: num 42
+##   .. .. ..@ ymax: num 46
+##   ..@ rotated : logi FALSE
+##   ..@ rotation:Formal class &#39;.Rotation&#39; [package &quot;raster&quot;] with 2 slots
+##   .. .. ..@ geotrans: num(0) 
+##   .. .. ..@ transfun:function ()  
+##   ..@ ncols   : int 10
+##   ..@ nrows   : int 10
+##   ..@ crs     :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
+##   .. .. ..@ projargs: chr &quot;+proj=longlat +datum=WGS84 +no_defs&quot;
+##   ..@ history : list()
+##   ..@ z       : list()</code></pre>
+<p><code>raster</code> uses a <code>S4</code> slot structure with a <code>RasterLayer</code> object. Simply typing the name of the <code>RasterLayer</code> gives a summary of the object at the console.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="raster-data.html#cb3-1"></a>r</span></code></pre></div>
+<pre><code>## class      : RasterLayer 
+## dimensions : 10, 10, 100  (nrow, ncol, ncell)
+## resolution : 1, 0.4  (x, y)
+## extent     : -126, -116, 42, 46  (xmin, xmax, ymin, ymax)
+## crs        : +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<div id="exploring-raster-objects" class="section level3 challenge">
+<h3><span class="header-section-number">5.0.1</span> Exploring raster objects</h3>
+<ol style="list-style-type: decimal">
+<li>what is the minimal data required to define a <code>RasterLayer</code>?</li>
+<li>What is odd here about the CRS?</li>
+<li>How do we pull out just the CRS for our r <code>rasterLayer</code>?</li>
+<li>Building on this, what is the code to pull out just our xmin value in our extent, or bounding box?</li>
+</ol>
+</div>
+<div id="answer" class="section level3 solution">
+<h3><span class="header-section-number">5.0.2</span> Answer</h3>
+<ol style="list-style-type: decimal">
+<li><p>number columns, number rows, and extent - though the <code>raster</code> package will use defaults if values aren’t provided</p></li>
+<li><p>We didn’t provide one - <code>raster</code> uses default <code>crs</code> of WGS84 if you don’t provide a <code>crs</code></p></li>
+<li></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="raster-data.html#cb5-1"></a>r<span class="op">@</span>crs</span></code></pre></div>
+<pre><code>## CRS arguments: +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="raster-data.html#cb7-1"></a><span class="co"># or</span></span>
+<span id="cb7-2"><a href="raster-data.html#cb7-2"></a><span class="kw">crs</span>(r)</span></code></pre></div>
+<pre><code>## CRS arguments: +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="raster-data.html#cb9-1"></a><span class="kw">slotNames</span>(r)</span></code></pre></div>
+<pre><code>##  [1] &quot;file&quot;     &quot;data&quot;     &quot;legend&quot;   &quot;title&quot;    &quot;extent&quot;   &quot;rotated&quot; 
+##  [7] &quot;rotation&quot; &quot;ncols&quot;    &quot;nrows&quot;    &quot;crs&quot;      &quot;history&quot;  &quot;z&quot;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="raster-data.html#cb11-1"></a>r<span class="op">@</span>extent[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] -126</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="raster-data.html#cb13-1"></a><span class="co"># there are slots w/in slots too</span></span>
+<span id="cb13-2"><a href="raster-data.html#cb13-2"></a><span class="kw">slotNames</span>(r<span class="op">@</span>extent)</span></code></pre></div>
+<pre><code>## [1] &quot;xmin&quot; &quot;xmax&quot; &quot;ymin&quot; &quot;ymax&quot;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="raster-data.html#cb15-1"></a>r<span class="op">@</span>extent<span class="op">@</span>xmin</span></code></pre></div>
+<pre><code>## [1] -126</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="raster-data.html#cb17-1"></a><span class="co"># There&#39;s always a couple ways to do same thing in R...</span></span>
+<span id="cb17-2"><a href="raster-data.html#cb17-2"></a><span class="kw">extent</span>(r)[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] -126</code></pre>
+<p>So far we just have a container with no values (try plotting what we have so far) - let’s provide values to the cells using the runif function to derive random values from the uniform distribution</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="raster-data.html#cb19-1"></a>r[] &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="kw">ncell</span>(r))</span>
+<span id="cb19-2"><a href="raster-data.html#cb19-2"></a>r</span></code></pre></div>
+<pre><code>## class      : RasterLayer 
+## dimensions : 10, 10, 100  (nrow, ncol, ncell)
+## resolution : 1, 0.4  (x, y)
+## extent     : -126, -116, 42, 46  (xmin, xmax, ymin, ymax)
+## crs        : +proj=longlat +datum=WGS84 +no_defs 
+## source     : memory
+## names      : layer 
+## values     : 0.004823775, 0.9999969  (min, max)</code></pre>
+<p>Notice the different output now when typing ‘r?’ An important point to make here is that objects in the <code>raster</code> package can be either in memory or on disk - not the value for our <code>RasterLayer</code> r of ‘data source’. If this were a large raster on disk, the value would be the path to the file on disk.</p>
+<p>We can test this as well using methods in <code>raster</code> (and test if the raster has values too):</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="raster-data.html#cb21-1"></a><span class="kw">inMemory</span>(r)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="raster-data.html#cb23-1"></a><span class="kw">fromDisk</span>(r)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="raster-data.html#cb25-1"></a><span class="kw">hasValues</span>(r)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We can plot now as well with base R <code>plot</code>:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="raster-data.html#cb27-1"></a><span class="kw">plot</span>(r)</span></code></pre></div>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/plot%20raster-1.png" width="672" /></p>
+<p>We can also overwrite the cell values for our raster:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="raster-data.html#cb28-1"></a><span class="kw">values</span>(r) &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">ncell</span>(r)</span>
+<span id="cb28-2"><a href="raster-data.html#cb28-2"></a><span class="kw">values</span>(r)</span></code></pre></div>
+<pre><code>##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100</code></pre>
+<p>You can access raster values via direct indexing or line, column indexing - take a minute to see how this works using raster r we just created - the syntax is:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="raster-data.html#cb30-1"></a>r[i]</span>
+<span id="cb30-2"><a href="raster-data.html#cb30-2"></a>r[line, column]</span></code></pre></div>
+<p>How is <code>raster</code> data storage unlike a <code>matrix</code> in R? You can create a <code>matrix</code> with same dimensions and values and compare if you want:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="raster-data.html#cb31-1"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">10</span>, <span class="dt">ncol=</span><span class="dv">10</span>)</span>
+<span id="cb31-2"><a href="raster-data.html#cb31-2"></a>m[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="raster-data.html#cb33-1"></a>r[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p><code>RasterBrick</code> and <code>RasterStack</code> are the two additional classes in <code>raster</code> and handle multiple raster layers. They differ from each other in how they handle multiple layers, file formats they support, their representation and their processing speed. A <code>RasterBrick</code> typically is a single multi-layer file such as a multispectral image. A <code>RasterStack</code> can virtually connect several <code>RasterLayer</code> objects in memory and allows pixel-based calculations on separate raster layers, while a <code>RasterBrick</code> has to refer to a single multi-layer file or multi-layer object. Note that methods that operate on either a <code>RasterStack</code> or <code>RasterBrick</code> usually return a <code>RasterBrick</code>, and processing will be mor efficient on a <code>RasterBrick</code> object.</p>
+<p>It’s easy to manipulate our <code>RasterLayer</code> to make a couple new layers, and then stack layers:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="raster-data.html#cb35-1"></a>r2 &lt;-<span class="st"> </span>r <span class="op">*</span><span class="st"> </span><span class="dv">50</span></span>
+<span id="cb35-2"><a href="raster-data.html#cb35-2"></a>r3 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(r <span class="op">*</span><span class="st"> </span><span class="dv">5</span>)</span>
+<span id="cb35-3"><a href="raster-data.html#cb35-3"></a>s &lt;-<span class="st"> </span><span class="kw">stack</span>(r, r2, r3)</span>
+<span id="cb35-4"><a href="raster-data.html#cb35-4"></a>s</span></code></pre></div>
+<pre><code>## class      : RasterStack 
+## dimensions : 10, 10, 100, 3  (nrow, ncol, ncell, nlayers)
+## resolution : 1, 0.4  (x, y)
+## extent     : -126, -116, 42, 46  (xmin, xmax, ymin, ymax)
+## crs        : +proj=longlat +datum=WGS84 +no_defs 
+## names      :    layer.1,    layer.2,    layer.3 
+## min values :   1.000000,  50.000000,   2.236068 
+## max values :  100.00000, 5000.00000,   22.36068</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="raster-data.html#cb37-1"></a><span class="kw">plot</span>(s)</span></code></pre></div>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/plot_stack-1.png" width="672" /></p>
+<p>Same process for generating a raster brick (here I make layers and create a <code>RasterBrick</code> in same step):</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="raster-data.html#cb38-1"></a>b &lt;-<span class="st"> </span><span class="kw">brick</span>(<span class="dt">x=</span><span class="kw">c</span>(r, r <span class="op">*</span><span class="st"> </span><span class="dv">50</span>, <span class="kw">sqrt</span>(r <span class="op">*</span><span class="st"> </span><span class="dv">5</span>)))</span>
+<span id="cb38-2"><a href="raster-data.html#cb38-2"></a>b</span></code></pre></div>
+<pre><code>## class      : RasterBrick 
+## dimensions : 10, 10, 100, 3  (nrow, ncol, ncell, nlayers)
+## resolution : 1, 0.4  (x, y)
+## extent     : -126, -116, 42, 46  (xmin, xmax, ymin, ymax)
+## crs        : +proj=longlat +datum=WGS84 +no_defs 
+## source     : memory
+## names      :    layer.1,    layer.2,    layer.3 
+## min values :   1.000000,  50.000000,   2.236068 
+## max values :  100.00000, 5000.00000,   22.36068</code></pre>
 
+</div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

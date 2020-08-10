@@ -1,2 +1,127 @@
 # Raster data
 
+Support for gridded data in R in recent year has been best implemented with the `raster` package by Robert Hijmans. The `raster` package allows you to:
+
+* read and write almost any commonly used raster data format using `rgdal`
+* perform typical raster processing operations such as resampling, projecting, filtering, raster math, etc.
+* work with files on disk that are too big to read into memory in R
+* run operations quickly since the package relies on back-end C code 
+
+The [home page](https://cran.r-project.org/web/packages/raster/) for the `raster` package has links to several well-written vignettes and documentation for the package.
+
+The `raster` package uses three classes / types of objects to represent raster data - `RasterLayer`, `RasterStack`, and `RasterBrick` - these are all `S4` new style classes in R, just like `sp` classes.
+
+There are new developments in raster world in R worth noting - a new package called [stars](https://r-spatial.github.io/stars/index.html) (spatiotemporal tidy arrays with R) has been developed through an R-Consortium funded project to handle rasters in a way that is both `sf` and pipe-based workflow friendly.
+
+Additionally, Robert Hijmans has a new in development package called [terra](https://github.com/rspatial/terra) as a replacement package for `raster`.
+
+To familiarize ourselves with the `raster` package, let's create an empty `RasterLayer` object - in order to do this we have to:
+* define the matrix (rows and columns) 
+* define the spatial bounding box
+* provide values to the cells  
+
+Note that typically we would be reading raster data in from a file rather than creating a raster from scratch. Run through code steps below to familiarize yourself with contsructing a `RasterLayer` from scratch.
+
+```{r raster-layer, message=FALSE, warning=FALSE, error=FALSE}
+library(raster)
+r <- raster(ncol=10, nrow = 10, xmx=-116,xmn=-126,ymn=42,ymx=46)
+str(r)
+```
+
+`raster` uses a `S4` slot structure with a `RasterLayer` object. Simply typing the name of the `RasterLayer` gives a summary of the object at the console.
+```{r raster-layer2, message=FALSE, warning=FALSE, error=FALSE}
+r
+```
+
+### Exploring raster objects {.challenge}
+
+1. what is the minimal data required to define a `RasterLayer`? 
+2. What is odd here about the CRS? 
+3. How do we pull out just the CRS for our r `rasterLayer`? 
+4. Building on this, what is the code to pull out just our xmin value in our extent, or bounding box?
+
+### Answer {.solution} 
+
+1. number columns, number rows, and extent - though the `raster` package will use defaults if values aren't provided
+
+2. We didn't provide one - `raster` uses default `crs` of WGS84 if you don't provide a `crs`
+
+3. 
+```{r message=FALSE, warning=FALSE, error=FALSE}
+r@crs
+# or
+crs(r)
+```
+
+4. 
+```{r message=FALSE, warning=FALSE, error=FALSE}
+slotNames(r)
+r@extent[1]
+# there are slots w/in slots too
+slotNames(r@extent)
+r@extent@xmin
+# There's always a couple ways to do same thing in R...
+extent(r)[1]
+```
+
+So far we just have a container with no values (try plotting what we have so far) - let's provide values to the cells using the runif function to derive random values from the uniform distribution
+```{r runif, message=FALSE, warning=FALSE, error=FALSE}
+r[] <- runif(n=ncell(r))
+r
+```
+
+Notice the different output now when typing 'r?'  An important point to make here is that objects in the `raster` package can be either in memory or on disk - not the value for our `RasterLayer` r of 'data source'.  If this were a large raster on disk, the value would be the path to the file on disk.
+
+We can test this as well using methods in `raster` (and test if the raster has values too):
+
+```{r inmemory, message=FALSE, warning=FALSE, error=FALSE}
+inMemory(r)
+fromDisk(r)
+hasValues(r)
+```
+
+We can plot now as well with base R `plot`:
+```{r plot raster, message=FALSE, warning=FALSE, error=FALSE}
+plot(r)
+```
+
+We can also overwrite the cell values for our raster:
+```{r new_values_raster, message=FALSE, warning=FALSE, error=FALSE}
+values(r) <- 1:ncell(r)
+values(r)
+```
+
+You can access raster values via direct indexing or line, column indexing - take a minute to see how this works using raster r we just created - the syntax is:
+```r
+r[i]
+r[line, column]
+```
+
+How is `raster` data storage unlike a `matrix` in R?  You can create a `matrix` with same dimensions and values and compare if you want:
+```{r matrix_raster, message=FALSE, warning=FALSE, error=FALSE}
+m <- matrix (1:100, nrow=10, ncol=10)
+m[1,2]
+r[1,2]
+```
+
+`RasterBrick` and `RasterStack` are the two additional classes in `raster` and handle multiple raster layers.  They differ from each other in how they handle multiple layers, file formats they support, their representation and their processing speed.  A `RasterBrick` typically is a single multi-layer file such as a multispectral image. A `RasterStack` can virtually connect several `RasterLayer` objects in memory and allows pixel-based calculations on separate raster layers, while a `RasterBrick` has to refer to a single multi-layer file or multi-layer object.  Note that methods that operate on either a `RasterStack` or `RasterBrick` usually return a `RasterBrick`, and processing will be mor efficient on a `RasterBrick` object.  
+
+It's easy to manipulate our `RasterLayer` to make a couple new layers, and then stack layers:
+
+```{r raster_stack, message=FALSE, warning=FALSE, error=FALSE}
+r2 <- r * 50
+r3 <- sqrt(r * 5)
+s <- stack(r, r2, r3)
+s
+```
+
+```{r plot_stack, message=FALSE, warning=FALSE, error=FALSE}
+plot(s)
+```
+
+Same process for generating a raster brick (here I make layers and create a `RasterBrick` in same step):
+
+```{r raster_brick, message=FALSE, warning=FALSE, error=FALSE}
+b <- brick(x=c(r, r * 50, sqrt(r * 5)))
+b
+```

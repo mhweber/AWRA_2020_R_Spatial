@@ -1,6 +1,48 @@
 # Geoprocessing
+## Lesson Goals
 
+A quick look at a couple typical topological operations (spatial subsetting, spatial joins, dissolve) using `sf`
 
 ## Example one
+### Spatial Subsetting
+Let's look at the bike paths and parks data in the `awra2020spatial` package. A typical spatial question we might ask of our data is 'what trails go through parks in town?' A great feature of `sf` is it supports spatial indexing:
+```{r subset, message=FALSE, warning=FALSE, error=FALSE}
+library(sf)
+library(awra2020spatial)
+data(parks)
+data(bike_paths)
 
+plot(bike_paths$geoms, col='green', axes=T)
+plot(parks$geoms, col='blue', add=T)
+paths_in_parks <- bike_paths[parks,]
+plot(paths_in_parks$geoms, col='red', lwd = 2, add=T)
+title(main='Bike Paths in Parks in Austin')
+```
 ## Example two
+### Spatial Join
+First we'll use chained operations to select just a couple columns from both bike_paths and parks, and then we'll do a spatial join operation in `sf`.  Note again, when we do a select on just attribute column, the geometry column remains - geometry is sticky in `sf`!
+```{r join, message=FALSE, warning=FALSE, error=FALSE}
+library(dplyr)
+bike_paths <- bike_paths %>% 
+  dplyr::select(ROUTE_NAME)
+parks <- parks %>% 
+  dplyr::select(LOCATION_NAME, ZIPCODE,PARK_TYPE)
+parks_bike_paths <- st_join(parks, bike_paths) # st_intersects is the default
+glimpse(parks_bike_paths)
+```
+
+## Example Three
+### Dissolve
+We can perform a spatial dissolve in `sf` using `dplyr` `group_by` and `summarize` functions with an `sf` object!
+Note that we could pull down `tidycensus` at tract level, but instead we want to look at running a dissolve to get from block group to tract level
+```{r dissolve, message=FALSE, warning=FALSE, error=FALSE}
+library(ggplot2)
+parks$AREA <- st_area(parks)
+parks_zip <- parks %>% 
+  group_by(ZIPCODE) %>%
+  summarise(AREA = sum(AREA)) %>%
+  ggplot() + geom_sf(aes(fill=(ZIPCODE))) +
+  ggtitle("Austin Parks by Zip Code") + 
+  theme_bw()
+parks_zip
+```

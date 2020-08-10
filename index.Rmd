@@ -32,6 +32,7 @@ knitr::include_graphics("images/WordCloud.png")
 - Packages you need installed
   + `sf`
   + `raster`
+  + `ggplot2`
   + `stars`
   + `tmap`
   + `tmaptools`
