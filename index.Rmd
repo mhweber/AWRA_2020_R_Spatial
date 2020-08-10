@@ -108,7 +108,7 @@ R is an interpreted language (access through a command-line interpreter) with a 
 
 To learn about objects, become friends with the built-in `class` and `str` functions. Let's explore a new dataset - [palmerpenguins](https://github.com/allisonhorst/palmerpenguins) - recently developed by Allison Horst as an alternative to the old R standby `iris` dataset:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(palmerpenguins)
 class(penguins)
 ```
@@ -117,14 +117,14 @@ class(penguins)
 str(penguins)
 ```
 
-`penguins` is a tibble and was created as a new alternative to the `iris` data set that has been used extensively for beginning tutorials on learning R. `penguins` as you can see is a [tibble](https://tibble.tidyverse.org/), which is a new `tidyverse` spin on `data frames`. Data frames consist of rows of observations  on columns of values for variables of interest - they are one of the fundamental and most important data structures in R. `tibbles` make a few improvements / changes to `data frames` such as:
+`penguins` is a [tibble](https://tibble.tidyverse.org/), which is a new `tidyverse` spin on `data frames`, and was created as a new alternative to the `iris` data set that has been used extensively for beginning tutorials on learning R. Data frames consist of rows of observations  on columns of values for variables of interest - they are one of the fundamental and most important data structures in R. `tibbles` make a few improvements / changes to `data frames` such as:
 
   - Never converting strings to factors
   - Never creating row names
   - Updated print method that only shows first 10 rows, just the columns that fit on the screen, and the type of each column (just as we get using `str`)
 
 We can easily convert objects from `tibble` to `data frame` and vice versa:
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(tibble)
 penguins <- as.data.frame(penguins)
 penguins <- as_tibble(penguins)
@@ -153,20 +153,13 @@ We can ask what data type something is using `typeof`:
 ```{r}
 typeof(penguins)
 ```
-```
-[1] "list"
-```
+
 ```{r}
 typeof(penguins$bill_length_mm)
 ```
-```
-[1] "double"
-```
+
 ```{r}
-typeof(penguins$specis)
-```
-```
-[1] "integer"
+typeof(penguins$species)
 ```
 
 We see a couple interesting things here - `penguins`, which we just said is a `tibble`, is a data type of `list`.  `bill_length_mm` is data type `double`, and in `str(penguins)` we saw it was numeric - that makes sense - but we see that `species` is data type `integer`, and in `str(penguins)` we were told this variable was a factor with three levels.  What's going on here?
@@ -184,23 +177,18 @@ levels(penguins$species)[1] <- 'adeliae'
 
 See if you can explain how that re-asignment we just did worked.
 
-To access particular columns in a `tibble` or `data frame`, as we saw above, we use the `$` operatoe. We can see the value of `species` for each observation in `penguins` as well as listing of all levels of the variable by running:
+To access particular columns in a `tibble` or `data frame`, as we saw above, we use the `$` operator. We can see the value of `species` for each observation in `penguins` as well as listing of all levels of the variable by running:
 ```{r}
 penguins$species
 ```
+
 To access particular columns or rows of a data frame, we use indexing:
 ```{r}
 penguins[1,3] # the 1st row and the 3rd column
 ```
-```
-[1] 39.1
-```
+
 ```{r}
 penguins[4,1] # the 4th row and the 1st column
-```
-```
-<fct>  
-1 Adelie
 ```
 
 A handy function is `names`, which you can use to get or to set data frame variable names:
