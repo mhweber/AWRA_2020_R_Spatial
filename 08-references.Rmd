@@ -1,0 +1,45 @@
+# References {-}
+
+### R Spatial Resources
+* [R Spatial - **Spatial Data Science with R**](http://rspatial.org/spatial/)
+* [**Geocomputation with R**](https://geocompr.robinlovelace.net/)
+* [**R Spatial Task View**](https://cran.r-project.org/web/views/Spatial.html)
+* [**Modern Geospatial Data Analysis with R by Zev Ross**](http://files.zevross.com/workshops/spatial/slides/html/0-deck-list.html)
+* [**Spatial Data Science - Pebesma and Bivand**](https://keen-swartz-3146c4.netlify.com/)
+* [**Spatial Data Science Course- Prof. Adam Wilson**](http://adamwilson.us/SpatialDataScience/index.html)
+* [**Introduction to Mapping and Spatial Analysis with R**](https://cengel.github.io/rspatial/)
+* [**R Spatial Workshop for EPA R User Group**](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2018/index.html)
+* [**Intro to GIS and Spatial Analysis by Manuel Gimond**](https://mgimond.github.io/Spatial/index.html)
+* [**FOSS4G2019 R for Geospatial Processing**](https://bakaniko.github.io/FOSS4G2019_Geoprocessing_with_R_workshop/)
+* [**An Introduction to Spatial Analysis and Mapping in R**](https://bookdown.org/lexcomber/brunsdoncomber2e/)
+* [Earth Analytics Spatial Data in R](https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/)
+
+### R Vector Processing / Simple Features Resources
+
+* [**Simple Features for R**](https://r-spatial.github.io/sf/index.html)
+* [**Spatial Data in R: New Directions**](https://edzer.github.io/UseR2017/)
+* [**sp-sf Migration**](https://github.com/r-spatial/sf/wiki/Migrating)
+* [**An Exploration of Simple Features for R**](https://www.jessesadler.com/post/simple-feature-objects/)
+* [**Simple Features: Building Spatial Data Pipelines in R**](https://www.azavea.com/blog/2017/08/30/spatial-analysis-pipelines-in-r-with-simple-features/)
+* [**Tidy spatial data in R: using dplyr, tidyr, and ggplot2 with sf**](http://strimas.com/r/tidy-sf/)
+
+### R Raster Resources
+
+* [Wageningen University **Intro to Raster**](http://geoscripting-wur.github.io/IntroToRaster/)
+* [Wageningen University **Advanced Raster Analysis**](https://geoscripting-wur.github.io/AdvancedRasterAnalysis/)
+* [**The Visual Raster Cheat Sheet GitHub Repo**](https://github.com/etiennebr/visualraster)
+* [**Rastervis**](https://oscarperpinan.github.io/rastervis/)
+* [**stars - spatiotemporal arrays**](https://r-spatial.github.io/stars/)
+
+### R Mapping Resources
+
+* [**mapview**](https://r-spatial.github.io/mapview/)
+* [**Leaflet for R**](https://rstudio.github.io/leaflet/)
+* [**tmap**](https://github.com/mtennekes/tmap)
+* [Zev Ross **Creating beautiful demographic maps in R with the `tidycensus` and `tmap` packages**](http://zevross.com/blog/2018/10/02/creating-beautiful-demographic-maps-in-r-with-the-tidycensus-and-tmap-packages/)
+* [Geocomputation with R: **Making maps with R**](https://geocompr.robinlovelace.net/adv-map.html)
+* [Ryan Peek: **Mapping in R**](https://ryanpeek.github.io/mapping-in-R-workshop/index.html)
+
+### General R Resources
+* [**Google R Style Guide**](https://google.github.io/styleguide/Rguide.xml)
+* [**Advanced R by Hadley Wickham**](http://adv-r.had.co.nz/)

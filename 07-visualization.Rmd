@@ -1,0 +1,50 @@
+# Visualizing Spatial Data
+
+## Lesson Goals
+
+* Explore a couple mapping libraries in R
+
+R is fantastic for making publication quality static maps, and for generating repetitive graphics through scripts, and we've shown the use of base plotting and using `ggplot` for making maps already. There are also a number of packages in R that link R code to plotting libraries developed in Javascript (or other languages) for interactive plotting and web integration.
+
+### Chorpleths with tmap
+Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html). Here we make a choropleth map of median household income in Travis county in Texas.
+```{r}
+library(sf)
+library(tidycensus)
+# census_api_key("YOUR API KEY GOES HERE")
+```
+
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+library(tidycensus)
+library(tmap)
+options(tigris_use_cache = FALSE)
+austin_tracts <- get_acs(state = 'TX', county = 'Travis', geography = "tract",
+                         variables = "B19013_001", geometry = TRUE)
+
+tm_shape(austin_tracts) + tm_polygons("estimate")
+```
+
+### Leaflet
+[Leaflet](https://leafletjs.com/) is an extremely popular open-source javascript library for interactive web mapping, and the `leaflet` R package allows R users to create Leaflet maps from R. `Leaflet` can plot `sf` or `sp` objects, or x / y coordinates, and can plot points, lines or polygons. There are a number of [base layers you can choose from](http://leaflet-extras.github.io/leaflet-providers/preview/index.html).  It's worth spending some time exploring the excellent [Leaflet for R site](https://rstudio.github.io/leaflet/).
+
+Here we make the simplest of leaflet maps:
+```{r leaflet, message=FALSE, warning=FALSE, error=FALSE}
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-123.26720, lat=44.5810, popup="Here's my house")
+m  # Print the map
+```
+
+### mapview
+[Mapview](https://r-spatial.github.io/mapview/index.html) is a package designed for quick and easy interactive visualizations of spatial data - it makes use of `leaflet` but simplifies mapping functions compared to the `leaflet` package.  
+
+It's easy to layer features with `mapview` - you can supply a list of objects to `mapview` or use + syntax as with `ggplot`.
+```{r message=FALSE, error=FALSE, warning=FALSE}
+library(awra2020spatial)
+library(mapview)
+data(bike_paths)
+data(parks)
+mapview(bike_paths) + parks
+```

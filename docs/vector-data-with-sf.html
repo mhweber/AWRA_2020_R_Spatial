@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Vector data with sf | Fundamentals of Spatial Analysis in R</title>
   <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Vector data with sf | Fundamentals of Spatial Analysis in R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2020-08-07" />
+<meta name="date" content="2020-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,43 +137,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.3</b> R Basics Review</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.4.1</b> Challenge</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.2</b> Answer</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.4.3</b> R Spatial Package Landscape</a></li>
+<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.4.4</b> How did we make this figure?</a></li>
+<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.4.5</b> Answer</a></li>
+<li class="chapter" data-level="1.4.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.4.6</b> Primary R spatial packages</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.2</b> R Basics Review</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.3</b> Spatial Data in R</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.3.1</b> Challenge</a></li>
-<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.3.2</b> Answer</a></li>
-<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.3.3</b> R Spatial Package Landscape</a></li>
-<li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.3.4</b> How did we make this figure?</a></li>
-<li class="chapter" data-level="1.3.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.3.5</b> Answer</a></li>
-<li class="chapter" data-level="1.3.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.3.6</b> Primary R spatial packages</a></li>
-</ul></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.4</b> Quick examples</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.4.1</b> Geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.4.2</b> Run and examine code chunk above</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.4.3</b> Answer</a></li>
-<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.4.4</b> Choropleth map</a></li>
-<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.4.5</b> Interactive mapping</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.5.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.5.2</b> Run and examine code chunk above</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.5.3</b> Answer</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.5.4</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.5.5</b> Interactive mapping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a></li>
-<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a></li>
+<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> st_read versus read_sf</a></li>
+<li class="chapter" data-level="2.1.3" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Geodatabases</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.5</b> Geopackages</a></li>
+<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
+<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.7</b> Spatial data from R packages</a></li>
+<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in raster data</a></li>
+<li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.9</b> Read in OpenStreetMap data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a><ul>
+<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
+<li class="chapter" data-level="3.1.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.1.2</b> Changes to CRS recently in R in <code>sf</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.1.3</b> Projected coordinate systems</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a><ul>
-<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#challenge-chained-spatial-operation"><i class="fa fa-check"></i><b>4.0.1</b> Challenge: Chained spatial operation</a></li>
-<li class="chapter" data-level="4.0.2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#answer-3"><i class="fa fa-check"></i><b>4.0.2</b> Answer</a></li>
+<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.0.1</b> Units in <code>sf</code></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
 <li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
 <li class="chapter" data-level="6.2" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.1.1</b> Chorpleths with tmap</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.1.2</b> Leaflet</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.1.3</b> mapview</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>6.2.1</b> R Spatial Resources</a></li>
-<li class="chapter" data-level="6.2.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>6.2.2</b> R Vector Processing / Simple Features Resources</a></li>
-<li class="chapter" data-level="6.2.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>6.2.3</b> R Raster Resources</a></li>
-<li class="chapter" data-level="6.2.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>6.2.4</b> R Mapping Resources</a></li>
-<li class="chapter" data-level="6.2.5" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>6.2.5</b> General R Resources</a></li>
+<li class="chapter" data-level="7.1.4" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.1.4</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="7.1.5" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.1.5</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="7.1.6" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.1.6</b> R Raster Resources</a></li>
+<li class="chapter" data-level="7.1.7" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.1.7</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="7.1.8" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.1.8</b> General R Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/mhweber/AWRA_2020_R_Spatial" target="blank">Published with bookdown</a></li>
@@ -200,182 +226,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 4.1: Sticky geometry with <code>sf</code>
 </p>
 </div>
-<ul>
-<li><code>sf</code> makes use of a couple key libraries that are the foundation for most open source geospatial software
+<code>sf</code> makes use of a couple key libraries that are the foundation for most open source geospatial software
 <div class="figure"><span id="fig:unnamed-chunk-2"></span>
 <img src="images/sf_deps.png" alt="Source: https://www.r-spatial.org/r/2020/03/17/wkt.html " width="150%" />
 <p class="caption">
 Figure 4.2: Source: <a href="https://www.r-spatial.org/r/2020/03/17/wkt.html" class="uri">https://www.r-spatial.org/r/2020/03/17/wkt.html</a>
 </p>
-</div></li>
-<li>Talk about the difference between <code>st_read</code> and <code>read_sf</code>. <code>read_sf</code> uses <code>tidyverse</code>-style defaults:
-<ul>
-<li><code>quiet = TRUE</code></li>
-<li><code>as_tibble</code> = TRUE</li>
-<li><code>stringsAsFactors = FALSE</code></li>
-</ul></li>
-<li>Mention units in sf…</li>
-</ul>
-<p>You can read many different vector data types (through <code>gdal</code>):
-- ESRI Shapefiles
-- Geopackages
-- Geojson
-- ESRI File Geodatabases
-- PostGIS databases
-- …</p>
-<p>We can easily see which drivers and how many are available to <code>sf</code> through <code>gdal</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">library</span>(sf)</a></code></pre></div>
-<pre><code>## Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&#39;There are &#39;</span>,<span class="kw">st_drivers</span>(<span class="st">&quot;vector&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>(), <span class="st">&#39; vector drivers available using st_read or read_sf&#39;</span>))</a></code></pre></div>
-<pre><code>## [1] &quot;There are 82 vector drivers available using st_read or read_sf&quot;</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">print</span>(<span class="st">&#39;They are the following: &#39;</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;They are the following: &quot;</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">print</span>(<span class="kw">st_drivers</span>(<span class="st">&quot;vector&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="dt">FullName =</span> long_name))</a></code></pre></div>
-<pre><code>##                                                                   FullName
-## PCIDSK                                                PCIDSK Database File
-## netCDF                                          Network Common Data Format
-## PDS4                                          NASA Planetary Data System 4
-## JP2OpenJPEG                     JPEG-2000 driver based on OpenJPEG library
-## JPEG2000       JPEG-2000 part 1 (ISO/IEC 15444-1), based on Jasper library
-## PDF                                                         Geospatial PDF
-## MBTiles                                                            MBTiles
-## EEDA                                                 Earth Engine Data API
-## ESRI Shapefile                                              ESRI Shapefile
-## MapInfo File                                                  MapInfo File
-## UK .NTF                                                            UK .NTF
-## OGR_SDTS                                                              SDTS
-## S57                                                         IHO S-57 (ENC)
-## DGN                                                       Microstation DGN
-## OGR_VRT                                           VRT - Virtual Datasource
-## REC                                                          EPIInfo .REC 
-## Memory                                                              Memory
-## BNA                                                              Atlas BNA
-## CSV                                           Comma Separated Value (.csv)
-## GML                                        Geography Markup Language (GML)
-## GPX                                                                    GPX
-## KML                                          Keyhole Markup Language (KML)
-## GeoJSON                                                            GeoJSON
-## GeoJSONSeq                                                GeoJSON Sequence
-## ESRIJSON                                                          ESRIJSON
-## TopoJSON                                                          TopoJSON
-## OGR_GMT                                           GMT ASCII Vectors (.gmt)
-## GPKG                                                            GeoPackage
-## SQLite                                                 SQLite / Spatialite
-## ODBC                                                                  ODBC
-## WAsP                                                      WAsP .map format
-## PGeo                                             ESRI Personal GeoDatabase
-## MSSQLSpatial                         Microsoft SQL Server Spatial Database
-## PostgreSQL                                              PostgreSQL/PostGIS
-## MySQL                                                                MySQL
-## OpenFileGDB                                                   ESRI FileGDB
-## XPlane                                X-Plane/Flightgear aeronautical data
-## DXF                                                            AutoCAD DXF
-## CAD                                                         AutoCAD Driver
-## Geoconcept                                                      Geoconcept
-## GeoRSS                                                              GeoRSS
-## GPSTrackMaker                                                GPSTrackMaker
-## VFK                                   Czech Cadastral Exchange Data Format
-## PGDUMP                                                 PostgreSQL SQL dump
-## OSM                                              OpenStreetMap XML and PBF
-## GPSBabel                                                          GPSBabel
-## SUA                        Tim Newport-Peace&#39;s Special Use Airspace Format
-## OpenAir                                                            OpenAir
-## OGR_PDS                                       Planetary Data Systems TABLE
-## WFS                                          OGC WFS (Web Feature Service)
-## WFS3                                OGC WFS 3 client (Web Feature Service)
-## HTF                                           Hydrographic Transfer Vector
-## AeronavFAA                                                     Aeronav FAA
-## Geomedia                                                     Geomedia .mdb
-## EDIGEO                                       French EDIGEO exchange format
-## GFT                                                   Google Fusion Tables
-## SVG                                               Scalable Vector Graphics
-## CouchDB                                                 CouchDB / GeoCouch
-## Cloudant                                                Cloudant / CouchDB
-## Idrisi                                                Idrisi Vector (.vct)
-## ARCGEN                                                   Arc/Info Generate
-## SEGUKOOA                                              SEG-P1 / UKOOA P1/90
-## SEGY                                                                 SEG-Y
-## XLS                                                        MS Excel format
-## ODS                   Open Document/ LibreOffice / OpenOffice Spreadsheet 
-## XLSX                                        MS Office Open XML spreadsheet
-## ElasticSearch                                               Elastic Search
-## Walk                                                                  Walk
-## Carto                                                                Carto
-## AmigoCloud                                                      AmigoCloud
-## SXF                                            Storage and eXchange Format
-## Selafin                                                            Selafin
-## JML                                                           OpenJUMP JML
-## PLSCENES                                            Planet Labs Scenes API
-## CSW                                 OGC CSW (Catalog  Service for the Web)
-## VDV                                    VDV-451/VDV-452/INTREST Data Format
-## MVT                                                    Mapbox Vector Tiles
-## TIGER                                               U.S. Census TIGER/Line
-## AVCBin                                            Arc/Info Binary Coverage
-## AVCE00                                       Arc/Info E00 (ASCII) Coverage
-## NGW                                                            NextGIS Web
-## HTTP                                                 HTTP Fetching Wrapper</code></pre>
-<p>Load <code>tidycensus</code> - you’ll need to set your Census API key. A key can be obtained from <a href="http://api.census.gov/data/key_signup.html">here</a>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
-<pre><code>## Warning: package &#39;tidycensus&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## Registered S3 method overwritten by &#39;rvest&#39;:
-##   method            from
-##   read_xml.response xml2</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># census_api_key(&quot;YOUR API KEY GOES HERE&quot;)</span></a></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">library</span>(tidycensus)</a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.3</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">options</span>(<span class="dt">tigris_use_cache =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb20-2" title="2">austin_tracts &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">state =</span> <span class="st">&#39;TX&#39;</span>, <span class="dt">county =</span> <span class="st">&#39;Travis&#39;</span>, <span class="dt">geography =</span> <span class="st">&quot;tract&quot;</span>,</a>
-<a class="sourceLine" id="cb20-3" title="3">                         <span class="dt">variables =</span> <span class="st">&quot;B19013_001&quot;</span>, <span class="dt">geometry =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">austin_tracts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> estimate)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">color =</span> <span class="ot">NA</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">26911</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb22-5" title="5"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;magma&quot;</span>) </a></code></pre></div>
-<p><img src="AWRA_2020_R_Spatial_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div id="challenge-chained-spatial-operation" class="section level3 challenge">
-<h3><span class="header-section-number">4.0.1</span> Challenge: Chained spatial operation</h3>
-<p>Earlier we showed example of printing and storing a statement using parens</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">(file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;gpkg/nc.gpkg&quot;</span>, <span class="dt">package=</span><span class="st">&#39;sf&#39;</span>))</a></code></pre></div>
-<pre><code>## [1] &quot;C:/Users/mweber/R/library/sf/gpkg/nc.gpkg&quot;</code></pre>
-<p>How would we read this file into an <code>sf</code> data frame using chained operation?</p>
 </div>
-<div id="answer-3" class="section level3 solution">
-<h3><span class="header-section-number">4.0.2</span> Answer</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">(file <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">read_sf</span>() -&gt;<span class="st"> </span>nc)</a></code></pre></div>
-<pre><code>## Simple feature collection with 100 features and 14 fields
-## geometry type:  MULTIPOLYGON
+<p><code>sf</code> is an implementation of <a href="https://en.wikipedia.org/wiki/Simple_Features">Simple features</a>, an open standard developed and endorsed by the Open Geospatial Consortium (OGC). Simple Features is a hierarchical data model that represents a wide range of geometry types - it includes all common vector geometry types (but does not include raster) and even allows geometry collections, which can have multiple geometry types in a single object. From the first <code>sf</code> package vignette we see:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="vector-data-with-sf.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/sf_objects.png&quot;</span>)</span></code></pre></div>
+<p><img src="images/sf_objects.png" width="700" /></p>
+<p>The big difference between <code>sf</code> and <code>sp</code> is that <code>sf</code> uses S3 classes rather than S4 as <code>sp</code> does. Simple features are simple <code>data.frame</code> objects that have a geometry list-column. The simple feature model will be familiar to those who use <a href="https://en.wikipedia.org/wiki/PostGIS">PostGIS</a>, <a href="https://en.wikipedia.org/wiki/MySQL">MySQL Spatial Extensions</a>, <a href="https://en.wikipedia.org/wiki/Oracle_Spatial_and_Graph">Oracle Spatial</a>, the <a href="https://en.wikipedia.org/wiki/GDAL">OGR component of the GDAL library</a>, <a href="https://datatracker.ietf.org/doc/rfc7946/">GeoJSON</a> and <a href="http://geopandas.org/">GeoPandas</a> in Python. Simple features are represented with Well-Known text - <a href="https://en.wikipedia.org/wiki/Well-known_text">WKT</a> - and well-known binary formats.</p>
+<p>Just as in <code>PostGIS</code>, all functions and methods in <code>sf</code> are prefixed with <code>st_</code>, which stands for ‘spatial and temporal’. An advantage of this prefixing is all commands are easy to find with command-line completion in <code>sf</code>.</p>
+<p>There is extensive documentation, blog posts and vignettes available for <code>sf</code> here:
+<a href="https://github.com/edzer/sfr">Simple Features for R</a>. Additionally, see <a href="http://r-spatial.org/">r-spatial blog</a> which has numerous announcements, discussion pieces and tutorials on spatial work in R focused.</p>
+<p>A very handy page, if you’re already familiar with the <code>sp</code> ecosystem, is the <a href="https://github.com/r-spatial/sf/wiki/migrating">Migrating</a> page on the <a href="https://github.com/r-spatial/sf/wiki">sf GitHub wiki</a>.</p>
+<p>Here’s a quick synopsis of available methods in <code>sf</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="vector-data-with-sf.html#cb2-1"></a><span class="kw">library</span>(sf)</span>
+<span id="cb2-2"><a href="vector-data-with-sf.html#cb2-2"></a><span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&#39;sf&#39;</span>)</span></code></pre></div>
+<pre><code>##  [1] $&lt;-                   [                     [[&lt;-                 
+##  [4] aggregate             as.data.frame         cbind                
+##  [7] coerce                dbDataType            dbWriteTable         
+## [10] identify              initialize            merge                
+## [13] plot                  print                 rbind                
+## [16] show                  slotsFromS3           st_agr               
+## [19] st_agr&lt;-              st_area               st_as_sf             
+## [22] st_bbox               st_boundary           st_buffer            
+## [25] st_cast               st_centroid           st_collection_extract
+## [28] st_convex_hull        st_coordinates        st_crop              
+## [31] st_crs                st_crs&lt;-              st_difference        
+## [34] st_filter             st_geometry           st_geometry&lt;-        
+## [37] st_interpolate_aw     st_intersection       st_intersects        
+## [40] st_is                 st_is_valid           st_join              
+## [43] st_line_merge         st_m_range            st_make_valid        
+## [46] st_nearest_points     st_node               st_normalize         
+## [49] st_point_on_surface   st_polygonize         st_precision         
+## [52] st_reverse            st_sample             st_segmentize        
+## [55] st_set_precision      st_shift_longitude    st_simplify          
+## [58] st_snap               st_sym_difference     st_transform         
+## [61] st_triangulate        st_union              st_voronoi           
+## [64] st_wrap_dateline      st_write              st_z_range           
+## [67] st_zm                 transform            
+## see &#39;?methods&#39; for accessing help and source code</code></pre>
+<p>Let’s start exploring <code>sf</code> using some data included in the awra2020spatial package.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="vector-data-with-sf.html#cb4-1"></a><span class="kw">library</span>(awra2020spatial)</span>
+<span id="cb4-2"><a href="vector-data-with-sf.html#cb4-2"></a><span class="kw">data</span>(bike_paths)</span>
+<span id="cb4-3"><a href="vector-data-with-sf.html#cb4-3"></a><span class="kw">head</span>(bike_paths[,<span class="kw">c</span>(<span class="st">&#39;ROUTE_CODE&#39;</span>,<span class="st">&#39;ROUTE_NAME&#39;</span>,<span class="st">&#39;geoms&#39;</span>)])</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 2 fields
+## geometry type:  MULTILINESTRING
 ## dimension:      XY
-## bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
-## geographic CRS: NAD27
-## # A tibble: 100 x 15
-##     AREA PERIMETER CNTY_ CNTY_ID NAME  FIPS  FIPSNO CRESS_ID BIR74 SID74 NWBIR74
-##    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-##  1 0.114      1.44  1825    1825 Ashe  37009  37009        5  1091     1      10
-##  2 0.061      1.23  1827    1827 Alle~ 37005  37005        3   487     0      10
-##  3 0.143      1.63  1828    1828 Surry 37171  37171       86  3188     5     208
-##  4 0.07       2.97  1831    1831 Curr~ 37053  37053       27   508     1     123
-##  5 0.153      2.21  1832    1832 Nort~ 37131  37131       66  1421     9    1066
-##  6 0.097      1.67  1833    1833 Hert~ 37091  37091       46  1452     7     954
-##  7 0.062      1.55  1834    1834 Camd~ 37029  37029       15   286     0     115
-##  8 0.091      1.28  1835    1835 Gates 37073  37073       37   420     0     254
-##  9 0.118      1.42  1836    1836 Warr~ 37185  37185       93   968     4     748
-## 10 0.124      1.43  1837    1837 Stok~ 37169  37169       85  1612     1     160
-## # ... with 90 more rows, and 4 more variables: BIR79 &lt;dbl&gt;, SID79 &lt;dbl&gt;,
-## #   NWBIR79 &lt;dbl&gt;, geom &lt;MULTIPOLYGON [°]&gt;</code></pre>
-<p>A question to use on a spatial tibble - What type of object is ’‘? If you <code>run head()</code> does it behave the way you’re used to seeing <code>head</code> function? How might you get the behavior you’re used to seeing from <code>head</code> with’’</p>
+## bbox:           xmin: -97.75811 ymin: 30.26214 xmax: -97.75198 ymax: 30.28477
+## geographic CRS: WGS 84
+##   ROUTE_CODE   ROUTE_NAME                          geoms
+## 1    43.0023 LAMAR BLVD N MULTILINESTRING ((-97.75198...
+## 2    43.0023 LAMAR BLVD N MULTILINESTRING ((-97.75198...
+## 3    43.0028 LAMAR BLVD S MULTILINESTRING ((-97.75711...
+## 4    43.0028 LAMAR BLVD S MULTILINESTRING ((-97.75711...
+## 5    43.0028 LAMAR BLVD S MULTILINESTRING ((-97.75775...
+## 6    43.0028 LAMAR BLVD S MULTILINESTRING ((-97.75775...</code></pre>
+<p>Let’s break down what we just saw in bike paths, which is bike paths in Austin - from the first <code>sf</code> package vignette:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="vector-data-with-sf.html#cb6-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/sf_structure.png&quot;</span>)</span></code></pre></div>
+<p><img src="images/sf_structure.png" width="562" /></p>
+<p>We can see:</p>
+<ul>
+<li>in green a simple feature: a single record, or data.frame row, consisting of attributes and geometry</li>
+<li>in blue a single simple feature geometry (an object of class sfg)</li>
+<li>in red a simple feature list-column (an object of class sfc, which is a column in the data.frame)</li>
+</ul>
+<p>The <code>sfc</code>, our geometry list-column, is presented as <em>well-known text</em>, in the form of (for polygon data):</p>
+<ul>
+<li>Multipolygon(polygon1, polygon2)</li>
+</ul>
+<p>polygon1 might have 1 or more holes, and itself could be represented as (poly1, hole1, hole2).</p>
+<p>Each polygon and its holes are held together by a set of parentheses, so:</p>
+<ul>
+<li>Multipolygon(((list of coordinates))) indicates the exterior ring coordinates, going counter-clockwise in direction, without holes, of the first polygon.</li>
+</ul>
+<p>Generic plotting works on <code>sf</code> objects - take a minute to play with ploting the bike paths data frame - why do we specify <code>$geometry</code> in the plot call?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="vector-data-with-sf.html#cb7-1"></a><span class="kw">plot</span>(bike_paths<span class="op">$</span>geoms, <span class="dt">axes=</span>T)</span></code></pre></div>
+<p><img src="AWRA_2020_R_Spatial_files/figure-html/sf_plot-1.png" width="672" /></p>
+<div id="units-in-sf" class="section level3">
+<h3><span class="header-section-number">4.0.1</span> Units in <code>sf</code></h3>
+<p>The <code>crs</code> in <code>sf</code> encodes the units of measure in information relating to spatial units of features - this can be both handy and very confusing for those new to it. Consider the following:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="vector-data-with-sf.html#cb8-1"></a>(<span class="kw">sum</span>(<span class="kw">st_length</span>(bike_paths)))</span></code></pre></div>
+<pre><code>## 3456762 [m]</code></pre>
+<p>We can set units if we do manipulations as well using the <code>units</code> package</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="vector-data-with-sf.html#cb10-1"></a>units<span class="op">::</span><span class="kw">set_units</span>(<span class="kw">sum</span>(<span class="kw">st_length</span>(bike_paths)),km)</span></code></pre></div>
+<pre><code>## 3456.762 [km]</code></pre>
+<p>If we need to use the value elsewhere get rid of units</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="vector-data-with-sf.html#cb12-1"></a><span class="kw">as.numeric</span>(<span class="kw">sum</span>(<span class="kw">st_length</span>(bike_paths)))</span></code></pre></div>
+<pre><code>## [1] 3456762</code></pre>
 
 </div>
 </div>
@@ -407,12 +347,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -424,6 +363,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

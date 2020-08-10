@@ -41,6 +41,8 @@ knitr::include_graphics("images/WordCloud.png")
   + `tigris`
   + `tibble`
   + `rgdal`
+  + `leaflet`
+  + `mapview`
   + [awra2020spatial](https://github.com/mhweber/awra2020spatial) - data for this workshop contained in package
   
 - Downloading content via Github

@@ -18,6 +18,7 @@ We can quickly discover supported I/O vector formats either via `sf` or `rgdal`:
 library(knitr)
 library(sf)
 library(rgdal)
+print(paste0('There are ',st_drivers("vector") %>% nrow(), ' vector drivers available using st_read or read_sf'))
 kable(head(ogrDrivers(),n=5))
 kable(head(st_drivers(what='vector'),n=5))
 ```
@@ -25,7 +26,17 @@ kable(head(st_drivers(what='vector'),n=5))
 As well as I/O raster formats via `sf`:
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(knitr)
+print(paste0('There are ',st_drivers(what='raster') %>% nrow(), ' raster drivers available'))
 kable(head(st_drivers(what='raster'),n=5))
+```
+
+We can see how many drivers are available to `sf` through `gdal`:
+```{r st_drivers}
+library(dplyr)
+library(sf)
+print(paste0('There are ',st_drivers("vector") %>% nrow(), ' vector drivers available using st_read or read_sf'))
+print('They are the following: ')
+print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
 ```
 
 ## Reading in vector data
