@@ -62,12 +62,10 @@ options(scipen=3)
 plot(citylims$geometry, axes=T, main='Oregon City Limits')
 ```
 
-### st_read versus read_sf
-{.challenge}
+### st_read versus read_sf {.challenge}
 Above, I didn't pass any parameters to st_read - typically I would pass the parameters `quiet=TRUE` and `stringsAsFactors=FALSE` - why would this be a good practice in general?
 
-### Answer 
-{.solution}
+### Answer  {.solution}
 `read_sf` is an `sf` alternative to st_read (see [this](https://keen-swartz-3146c4.netlify.com/intro.html#read) section 1.2.2). Try reading in `citylims` data above using `read_sf` and notice difference, and check out `help(read_sf)`.  `read_sf` and `write`sf` are simply aliases for st_read and st_write with modified default arguments.  Big differences are:
 
 - stringsAsFactors=FALSE

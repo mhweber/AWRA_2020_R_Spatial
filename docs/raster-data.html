@@ -182,6 +182,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a><ul>
 <li class="chapter" data-level="5.0.1" data-path="raster-data.html"><a href="raster-data.html#exploring-raster-objects"><i class="fa fa-check"></i><b>5.0.1</b> Exploring raster objects</a></li>
 <li class="chapter" data-level="5.0.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>5.0.2</b> Answer</a></li>
+<li class="chapter" data-level="5.0.3" data-path="raster-data.html"><a href="raster-data.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.0.3</b> Manipulating <code>raster</code> objects</a></li>
+<li class="chapter" data-level="5.0.4" data-path="raster-data.html"><a href="raster-data.html#rasterbricks-and-rasterstacks"><i class="fa fa-check"></i><b>5.0.4</b> RasterBricks and Rasterstacks</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
 <li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#lesson-goals"><i class="fa fa-check"></i><b>6.1</b> Lesson Goals</a></li>
@@ -345,6 +347,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="raster-data.html#cb17-1"></a><span class="co"># There&#39;s always a couple ways to do same thing in R...</span></span>
 <span id="cb17-2"><a href="raster-data.html#cb17-2"></a><span class="kw">extent</span>(r)[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] -126</code></pre>
+</div>
+<div id="manipulating-raster-objects" class="section level3">
+<h3><span class="header-section-number">5.0.3</span> Manipulating <code>raster</code> objects</h3>
 <p>So far we just have a container with no values (try plotting what we have so far) - let’s provide values to the cells using the runif function to derive random values from the uniform distribution</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="raster-data.html#cb19-1"></a>r[] &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n=</span><span class="kw">ncell</span>(r))</span>
 <span id="cb19-2"><a href="raster-data.html#cb19-2"></a>r</span></code></pre></div>
@@ -355,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## crs        : +proj=longlat +datum=WGS84 +no_defs 
 ## source     : memory
 ## names      : layer 
-## values     : 0.004823775, 0.9999969  (min, max)</code></pre>
+## values     : 0.005185862, 0.9989325  (min, max)</code></pre>
 <p>Notice the different output now when typing ‘r?’ An important point to make here is that objects in the <code>raster</code> package can be either in memory or on disk - not the value for our <code>RasterLayer</code> r of ‘data source’. If this were a large raster on disk, the value would be the path to the file on disk.</p>
 <p>We can test this as well using methods in <code>raster</code> (and test if the raster has values too):</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="raster-data.html#cb21-1"></a><span class="kw">inMemory</span>(r)</span></code></pre></div>
@@ -385,6 +390,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 11</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="raster-data.html#cb33-1"></a>r[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
+</div>
+<div id="rasterbricks-and-rasterstacks" class="section level3">
+<h3><span class="header-section-number">5.0.4</span> RasterBricks and Rasterstacks</h3>
 <p><code>RasterBrick</code> and <code>RasterStack</code> are the two additional classes in <code>raster</code> and handle multiple raster layers. They differ from each other in how they handle multiple layers, file formats they support, their representation and their processing speed. A <code>RasterBrick</code> typically is a single multi-layer file such as a multispectral image. A <code>RasterStack</code> can virtually connect several <code>RasterLayer</code> objects in memory and allows pixel-based calculations on separate raster layers, while a <code>RasterBrick</code> has to refer to a single multi-layer file or multi-layer object. Note that methods that operate on either a <code>RasterStack</code> or <code>RasterBrick</code> usually return a <code>RasterBrick</code>, and processing will be mor efficient on a <code>RasterBrick</code> object.</p>
 <p>It’s easy to manipulate our <code>RasterLayer</code> to make a couple new layers, and then stack layers:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="raster-data.html#cb35-1"></a>r2 &lt;-<span class="st"> </span>r <span class="op">*</span><span class="st"> </span><span class="dv">50</span></span>

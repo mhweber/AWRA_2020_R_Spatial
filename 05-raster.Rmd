@@ -64,6 +64,7 @@ r@extent@xmin
 extent(r)[1]
 ```
 
+### Manipulating `raster` objects
 So far we just have a container with no values (try plotting what we have so far) - let's provide values to the cells using the runif function to derive random values from the uniform distribution
 ```{r runif, message=FALSE, warning=FALSE, error=FALSE}
 r[] <- runif(n=ncell(r))
@@ -104,6 +105,7 @@ m[1,2]
 r[1,2]
 ```
 
+### RasterBricks and Rasterstacks
 `RasterBrick` and `RasterStack` are the two additional classes in `raster` and handle multiple raster layers.  They differ from each other in how they handle multiple layers, file formats they support, their representation and their processing speed.  A `RasterBrick` typically is a single multi-layer file such as a multispectral image. A `RasterStack` can virtually connect several `RasterLayer` objects in memory and allows pixel-based calculations on separate raster layers, while a `RasterBrick` has to refer to a single multi-layer file or multi-layer object.  Note that methods that operate on either a `RasterStack` or `RasterBrick` usually return a `RasterBrick`, and processing will be mor efficient on a `RasterBrick` object.  
 
 It's easy to manipulate our `RasterLayer` to make a couple new layers, and then stack layers:
