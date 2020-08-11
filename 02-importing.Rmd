@@ -43,14 +43,11 @@ kable(head(st_drivers(what='raster'),n=5))
 Typically working with vector GIS data we work with ESRI shapefiles or geodatabases - here we have an example of how one would read in a shapefile using `sf`:
 ```{r shapefile_read, message=FALSE, warning=FALSE, error=FALSE}
 # download.file("ftp://ftp.gis.oregon.gov/adminbound/citylim_2017.zip","citylim_2017.zip")
-# unzip("citylim_2017.zip", exdir = ".") 
-citylims <- st_read("citylim_2017.shp") 
-plot(citylims$geometry, axes=T, main='Oregon City Limits') # plot it!
-
-# want to get rid of scientific notation in your plot?
-```{r shapefile_read2, message=FALSE, warning=FALSE, error=FALSE}
+# unzip("citylim_2017.zip", exdir = ".")
+library(sf)
+citylims <- st_read("citylim_2017.shp")
 options(scipen=3)
-plot(citylims$geometry, axes=T, main='Oregon City Limits')
+plot(citylims$geometry, axes=T, main='Oregon City Limits') # plot it!
 ```
 
 ### `st_read` versus `read_sf` {.challenge}
