@@ -18,6 +18,7 @@ paths_in_parks <- bike_paths[parks,]
 plot(paths_in_parks$geoms, col='red', lwd = 2, add=T)
 title(main='Bike Paths in Parks in Austin')
 ```
+
 ## Example two
 ### Spatial Join
 First we'll use chained operations to select just a couple columns from both bike_paths and parks, and then we'll do a spatial join operation in `sf`.  Note again, when we do a select on just attribute column, the geometry column remains - geometry is sticky in `sf`!
