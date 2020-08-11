@@ -30,15 +30,6 @@ print(paste0('There are ',st_drivers(what='raster') %>% nrow(), ' raster drivers
 kable(head(st_drivers(what='raster'),n=5))
 ```
 
-We can see how many drivers are available to `sf` through `gdal`:
-```{r st_drivers}
-library(dplyr)
-library(sf)
-print(paste0('There are ',st_drivers("vector") %>% nrow(), ' vector drivers available using st_read or read_sf'))
-print('They are the following: ')
-print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
-```
-
 ## Reading in vector data
 `sf` can be used to read numerous file types:
 
@@ -50,14 +41,14 @@ print(st_drivers("vector") %>% dplyr::select(FullName = long_name))
 
 ### Shapefiles
 Typically working with vector GIS data we work with ESRI shapefiles or geodatabases - here we have an example of how one would read in a shapefile using `sf`:
-```{r shapefile_read, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
-download.file("ftp://ftp.gis.oregon.gov/adminbound/citylim_2017.zip","citylim_2017.zip")
-unzip("citylim_2017.zip", exdir = ".") 
+```{r shapefile_read, message=FALSE, warning=FALSE, error=FALSE}
+# download.file("ftp://ftp.gis.oregon.gov/adminbound/citylim_2017.zip","citylim_2017.zip")
+# unzip("citylim_2017.zip", exdir = ".") 
 citylims <- st_read("citylim_2017.shp") 
 plot(citylims$geometry, axes=T, main='Oregon City Limits') # plot it!
 
 # want to get rid of scientific notation in your plot?
-```{r shapefile_read2, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
+```{r shapefile_read2, message=FALSE, warning=FALSE, error=FALSE}
 options(scipen=3)
 plot(citylims$geometry, axes=T, main='Oregon City Limits')
 ```
